@@ -114,7 +114,7 @@
     .dark .text-gray-800 {
       color: #e5e7eb;
     }
-    /* Стили для нового раздела скалолазов */
+    /* Стили для раздела скалолазов */
     .climbing-section {
       margin-top: 2rem;
       padding: 1.5rem;
@@ -165,29 +165,49 @@
     .climbing-carousel {
       position: relative;
       width: 100%;
-      height: 300px;
+      max-width: 960px;
+      height: 720px;
+      margin: 1rem auto;
       overflow: hidden;
       border-radius: 0.75rem;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-top: 1rem;
     }
     .climbing-carousel img {
       width: 100%;
-      height: 300px;
-      object-fit: cover;
+      height: 720px;
+      object-fit: contain;
+      object-position: center;
       display: none;
       transition: opacity 0.5s ease;
+      background-color: #f8f8f8;
+    }
+    .dark .climbing-carousel img {
+      background-color: #1f2937;
     }
     .climbing-carousel img.active {
       display: block;
       opacity: 1;
     }
+    @media (max-width: 1024px) {
+      .climbing-carousel {
+        height: 540px;
+      }
+      .climbing-carousel img {
+        height: 540px;
+      }
+    }
     @media (max-width: 640px) {
-      .carousel img, .climbing-carousel img {
+      .carousel img {
         height: 200px;
       }
-      .carousel, .climbing-carousel {
+      .carousel {
         height: 200px;
+      }
+      .climbing-carousel {
+        height: 360px;
+      }
+      .climbing-carousel img {
+        height: 360px;
       }
       .climbing-section h4 {
         font-size: 1.25rem;
@@ -311,10 +331,12 @@
             <img src="../assets/img/climbing8.jpg" alt="Крымские пейзажи">
             <img src="../assets/img/climbing9.jpg" alt="Активный отдых">
             <img src="../assets/img/climbing10.jpg" alt="Команда скалолазов">
+            <img src="../assets/img/climbing11.jpg" alt="Скалы Севастополя">
             <button class="carousel-button prev"><i class="fas fa-chevron-left"></i></button>
             <button class="carousel-button next"><i class="fas fa-chevron-right"></i></button>
             <div class="carousel-indicators">
               <span class="indicator active"></span>
+              <span class="indicator"></span>
               <span class="indicator"></span>
               <span class="indicator"></span>
               <span class="indicator"></span>
@@ -360,62 +382,48 @@
       document.body.classList.add('dark');
     }
 
-    // Карусель для герой-секции
-    const carouselImages = document.querySelectorAll('.carousel img');
-    const indicators = document.querySelectorAll('.carousel .carousel-indicators .indicator');
-    const prevButton = document.querySelector('.carousel .prev');
-    const nextButton = document.querySelector('.carousel .next');
-    let currentIndex = 0;
-    function showSlide(index, carouselImages, indicators) {
-      carouselImages.forEach(img => img.classList.remove('active'));
-      indicators.forEach(ind => ind.classList.remove('active'));
-      carouselImages[index].classList.add('active');
-      indicators[index].classList.add('active');
-      return index;
-    }
-    prevButton.addEventListener('click', () => {
-      let newIndex = currentIndex - 1;
-      if (newIndex < 0) newIndex = carouselImages.length - 1;
-      currentIndex = showSlide(newIndex, carouselImages, indicators);
-    });
-    nextButton.addEventListener('click', () => {
-      let newIndex = (currentIndex + 1) % carouselImages.length;
-      currentIndex = showSlide(newIndex, carouselImages, indicators);
-    });
-    indicators.forEach((ind, i) => {
-      ind.addEventListener('click', () => {
-        currentIndex = showSlide(i, carouselImages, indicators);
-      });
-    });
-    setInterval(() => {
-      let newIndex = (currentIndex + 1) % carouselImages.length;
-      currentIndex = showSlide(newIndex, carouselImages, indicators);
-    }, 5000);
+    // Универсальная функция для каруселей
+    function initCarousel(carouselSelector, imagesSelector, indicatorsSelector, prevSelector, nextSelector) {
+      const images = document.querySelectorAll(imagesSelector);
+      const indicators = document.querySelectorAll(indicatorsSelector);
+      const prevButton = document.querySelector(prevSelector);
+      const nextButton = document.querySelector(nextSelector);
+      let currentIndex = 0;
 
-    // Карусель для скалолазов
-    const climbingImages = document.querySelectorAll('.climbing-carousel img');
-    const climbingIndicators = document.querySelectorAll('.climbing-carousel .carousel-indicators .indicator');
-    const climbingPrevButton = document.querySelector('.climbing-carousel .prev');
-    const climbingNextButton = document.querySelector('.climbing-carousel .next');
-    let climbingIndex = 0;
-    prevButton.addEventListener('click', () => {
-      let newIndex = climbingIndex - 1;
-      if (newIndex < 0) newIndex = climbingImages.length - 1;
-      climbingIndex = showSlide(newIndex, climbingImages, climbingIndicators);
-    });
-    nextButton.addEventListener('click', () => {
-      let newIndex = (climbingIndex + 1) % climbingImages.length;
-      climbingIndex = showSlide(newIndex, climbingImages, climbingIndicators);
-    });
-    climbingIndicators.forEach((ind, i) => {
-      ind.addEventListener('click', () => {
-        climbingIndex = showSlide(i, climbingImages, climbingIndicators);
+      function showSlide(index) {
+        images.forEach(img => img.classList.remove('active'));
+        indicators.forEach(ind => ind.classList.remove('active'));
+        images[index].classList.add('active');
+        indicators[index].classList.add('active');
+        currentIndex = index;
+      }
+
+      prevButton.addEventListener('click', () => {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) newIndex = images.length - 1;
+        showSlide(newIndex);
       });
-    });
-    setInterval(() => {
-      let newIndex = (climbingIndex + 1) % climbingImages.length;
-      climbingIndex = showSlide(newIndex, climbingImages, climbingIndicators);
-    }, 5000);
+
+      nextButton.addEventListener('click', () => {
+        let newIndex = (currentIndex + 1) % images.length;
+        showSlide(newIndex);
+      });
+
+      indicators.forEach((ind, i) => {
+        ind.addEventListener('click', () => showSlide(i));
+      });
+
+      setInterval(() => {
+        let newIndex = (currentIndex + 1) % images.length;
+        showSlide(newIndex);
+      }, 5000);
+    }
+
+    // Инициализация карусели для герой-секции
+    initCarousel('.carousel', '.carousel img', '.carousel .carousel-indicators .indicator', '.carousel .prev', '.carousel .next');
+
+    // Инициализация карусели для скалолазов
+    initCarousel('.climbing-carousel', '.climbing-carousel img', '.climbing-carousel .carousel-indicators .indicator', '.climbing-carousel .prev', '.climbing-carousel .next');
 
     // Табы
     function openTab(tabId) {
