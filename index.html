@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Портал о Крыме — города, отдых, жильё, еда, события. Севастополь, Ялта, Алушта, Судак, Симферополь. МойКрым.рф">
+  <meta name="keywords" content="Крым, отдых в Крыму, жильё, Севастополь, Ялта, Судак, Симферополь, туризм Крым">
+  <meta name="author" content="МойКрым.рф">
+  <meta property="og:title" content="МойКрым.рф — Всё про отдых в Крыму">
+  <meta property="og:image" content="/assets/img/karta-kryma.jpg">
+  <meta property="og:description" content="Узнай всё о Крыме — жильё, туры, кафе, достопримечательности.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МойКрым.рф | Путеводитель по Крыму</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .city-button:hover {
+      transform: scale(1.05);
+      transition: all 0.3s ease;
+    }
+  </style>
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-XXXXXXX-X');
+</script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-white shadow py-4 mb-8">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">МойКрым.рф</h1>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="#" class="hover:text-blue-500">Главная</a></li>
+          <li><a href="#" class="hover:text-blue-500">Блог</a></li>
+          <li><a href="#" class="hover:text-blue-500">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4">
+    <section class="text-center mb-8">
+      <h2 class="text-3xl font-bold mb-4">Открой Крым вместе с нами</h2>
+      <p class="text-lg text-gray-600">Выберите город и узнайте всё: жильё, еда, отдых, туризм</p>
+    </section>
+
+    <section class="mb-12">
+      <img src="assets/img/karta-kryma.jpg" alt="Карта Крыма" class="rounded-lg shadow-md w-full h-auto">
+    </section>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
+      <a href="cities/sevastopol.html" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg city-button">
+        <h3 class="text-xl font-semibold">Севастополь</h3>
+      </a>
+      <a href="cities/yalta.html" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg city-button">
+        <h3 class="text-xl font-semibold">Ялта</h3>
+      </a>
+      <a href="cities/simferopol.html" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg city-button">
+        <h3 class="text-xl font-semibold">Симферополь</h3>
+      </a>
+      <a href="cities/alushta.html" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg city-button">
+        <h3 class="text-xl font-semibold">Алушта</h3>
+      </a>
+      <a href="cities/sudak.html" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg city-button">
+        <h3 class="text-xl font-semibold">Судак</h3>
+      </a>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-6 mt-12">
+  <div class="container mx-auto px-4 text-center text-sm space-y-2">
+    <p>© 2025 МойКрым.рф</p>
+    <p><a href="/privacy.html" class="underline hover:text-blue-400">Политика конфиденциальности</a></p>
+    <p>Создано с любовью к Крыму</p>
+  </div>
+  </footer>
+</body>
+</html>
