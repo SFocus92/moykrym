@@ -109,15 +109,57 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Кнопка наверх
+   <script>
+    // Проверка сохраненной темы при загрузке страницы
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+      } else {
+        document.body.classList.remove('dark');
+      }
+    });
+
+    // Переключатель темы
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      
+      // Сохранение выбранной темы
+      if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+    });
+
+    // Анимация появления при скролле
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Показ кнопки "Наверх" при скролле
     const toTop = document.getElementById('to-top');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        toTop.classList.remove('hidden');
+        toTop.style.display = 'block'; // Показать кнопку
       } else {
-        toTop.classList.add('hidden');
+        toTop.style.display = 'none'; // Скрыть кнопку
       }
     });
+
+    // Прокрутка вверх при нажатии на кнопку
     toTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -125,6 +167,5 @@
     // Динамический год
     document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
