@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Портал о Крыме — города, отдых, жильё, еда, события. Севастополь, Ялта, Алушта, Судак, Симферополь. МойКрым.рф">
+  <meta name="keywords" content="Крым, отдых в Крыму, жильё, Севастополь, Ялта, Судак, Симферополь, туризм Крым">
+  <meta name="author" content="МойКрым.рф">
+  <meta property="og:title" content="МойКрым.рф — Всё про отдых в Крыму">
+  <meta property="og:image" content="/assets/img/karta-kryma.jpg">
+  <meta property="og:description" content="Узнай всё о Крыме — жильё, туры, кафе, достопримечательности.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ялта | МойКрым.рф</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .tab-button.active {
+      @apply border-b-2 border-blue-600 text-blue-600;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.4s ease-in; }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-XXXXXXX-X');
+</script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-white shadow py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <a href="../index.html" class="text-blue-600 font-bold text-xl">← Назад</a>
+      <h1 class="text-2xl font-bold">Ялта</h1>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 mt-6">
+    <section class="mb-6">
+      <img src="../assets/img/yalta-hero.jpg" alt="Ялта" class="w-full h-64 object-cover rounded-xl shadow">
+      <h2 class="text-3xl font-bold mt-4 mb-2">Курортная жемчужина Ялта</h2>
+      <p class="text-gray-600">Город-курорт у подножия гор с набережной, виноградниками и роскошными дворцами.</p>
+    </section>
+
+    <section class="mb-8">
+      <ul class="flex flex-wrap gap-2 border-b pb-2 mb-4">
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('about')">О городе</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('hotels')">Жильё</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('food')">Кафе</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('tourism')">Туризм</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('events')">События</button></li>
+      </ul>
+
+      <div id="about" class="tab-content active">
+        <h3 class="text-xl font-semibold mb-2">Общее описание</h3>
+        <p>Ялта — один из самых известных курортов Крыма. Прекрасный климат, пальмы, виноградники, море и дворцы. Здесь отдыхали Чехов и Айвазовский, снимались советские фильмы. Город идеально подходит как для семейного, так и для VIP-отдыха.</p>
+      </div>
+
+      <div id="hotels" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Аренда жилья</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-bold">Санаторий "Ялта-Интурист"</h4>
+            <p class="text-sm">Бассейн, SPA, питание включено. от 6000₽/сутки.</p>
+          </li>
+          <li class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-bold">Вилла "Роза"</h4>
+            <p class="text-sm">Частная вилла в горах, вид на море. от 8000₽/сутки.</p>
+          </li>
+          <li class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-bold">Гостевой дом "У моря"</h4>
+            <p class="text-sm">Доступные номера у пляжа. от 2500₽/сутки.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div id="food" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Кафе и рестораны</h3>
+        <ul class="space-y-4">
+          <li><h4 class="font-bold">"Княжеский двор"</h4><p class="text-sm">Изысканная кухня в историческом здании. Чек: 2000₽.</p></li>
+          <li><h4 class="font-bold">"У Самвела"</h4><p class="text-sm">Армянская и татарская кухня. Чек: 800₽.</p></li>
+          <li><h4 class="font-bold">"Винный базар"</h4><p class="text-sm">Дегустации местных вин, закуски. Чек: 1200₽.</p></li>
+        </ul>
+      </div>
+
+      <div id="tourism" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Туризм и экскурсии</h3>
+        <ul class="list-disc pl-5">
+          <li>Ласточкино гнездо — символ Крыма на скале.</li>
+          <li>Массандровский и Ливадийский дворцы.</li>
+          <li>Канатная дорога на Ай-Петри.</li>
+        </ul>
+      </div>
+
+      <div id="events" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Ближайшие события</h3>
+        <ul class="space-y-2">
+          <li><span class="font-medium">Июнь:</span> Фестиваль вин в Массандре.</li>
+          <li><span class="font-medium">Июль:</span> Ночные киносеансы под открытым небом.</li>
+          <li><span class="font-medium">Август:</span> Концерты у набережной и парад яхт.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-6 mt-12">
+    <div class="text-center text-sm">© 2025 МойКрым.рф | Ялта</div>
+  </footer>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

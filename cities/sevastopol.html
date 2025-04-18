@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Портал о Крыме — города, отдых, жильё, еда, события. Севастополь, Ялта, Алушта, Судак, Симферополь. МойКрым.рф">
+  <meta name="keywords" content="Крым, отдых в Крыму, жильё, Севастополь, Ялта, Судак, Симферополь, туризм Крым">
+  <meta name="author" content="МойКрым.рф">
+  <meta property="og:title" content="МойКрым.рф — Всё про отдых в Крыму">
+  <meta property="og:image" content="/assets/img/karta-kryma.jpg">
+  <meta property="og:description" content="Узнай всё о Крыме — жильё, туры, кафе, достопримечательности.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Севастополь | МойКрым.рф</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .tab-button.active {
+      @apply border-b-2 border-blue-600 text-blue-600;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.4s ease-in; }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-XXXXXXX-X');
+</script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-white shadow py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <a href="../index.html" class="text-blue-600 font-bold text-xl">← Назад</a>
+      <h1 class="text-2xl font-bold">Севастополь</h1>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 mt-6">
+    <section class="mb-6">
+      <img src="../assets/img/sevastopol-hero.jpg" alt="Севастополь" class="w-full h-64 object-cover rounded-xl shadow">
+      <h2 class="text-3xl font-bold mt-4 mb-2">Город-герой Севастополь</h2>
+      <p class="text-gray-600">Исторический город на юго-западе Крыма с бухтами, флотом, музеями и морем.</p>
+    </section>
+
+    <section class="mb-8">
+      <ul class="flex flex-wrap gap-2 border-b pb-2 mb-4">
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('about')">О городе</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('hotels')">Жильё</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('food')">Кафе</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('tourism')">Туризм</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('events')">События</button></li>
+      </ul>
+
+      <div id="about" class="tab-content active">
+        <h3 class="text-xl font-semibold mb-2">Общее описание</h3>
+        <p>Севастополь — крупнейший порт Крыма и база Черноморского флота. Город богат на исторические памятники, музеи и пляжи. Среди главных достопримечательностей — Херсонес Таврический, Панорама обороны Севастополя и Малахов курган.</p>
+      </div>
+
+      <div id="hotels" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Аренда жилья</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-bold">Гостиница "Атлантида"</h4>
+            <p class="text-sm">Центр города, 4 звезды, вид на бухту. от 4200₽/сутки.</p>
+          </li>
+          <li class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-bold">Апартаменты "Морская Звезда"</h4>
+            <p class="text-sm">Рядом с пляжем Омега. Кухня, Wi-Fi. от 2900₽/сутки.</p>
+          </li>
+          <li class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-bold">Гостевой дом "Уют"</h4>
+            <p class="text-sm">Для семей с детьми, парковка. от 2500₽/сутки.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div id="food" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Кафе и рестораны</h3>
+        <ul class="space-y-4">
+          <li>
+            <h4 class="font-bold">"Fish Point"</h4>
+            <p class="text-sm">Морская кухня с видом на Балаклаву. Средний чек: 1500₽.</p>
+          </li>
+          <li>
+            <h4 class="font-bold">"Крымский дворик"</h4>
+            <p class="text-sm">Домашняя кухня, живое вино, шашлык. Чек: 900₽.</p>
+          </li>
+          <li>
+            <h4 class="font-bold">"Эспрессо-бар 1941"</h4>
+            <p class="text-sm">Кофейня в стиле ретро. Завтраки, десерты. Чек: 500₽.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div id="tourism" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Туризм и экскурсии</h3>
+        <ul class="list-disc pl-5">
+          <li>Херсонес Таврический — античные руины у моря.</li>
+          <li>Балаклавская бухта и подземный музей подводных лодок.</li>
+          <li>Круизы по Севастопольской бухте на катере.</li>
+        </ul>
+      </div>
+
+      <div id="events" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Ближайшие события</h3>
+        <ul class="space-y-2">
+          <li><span class="font-medium">9 мая:</span> Парад Победы на набережной Корнилова.</li>
+          <li><span class="font-medium">25 июля:</span> Фестиваль "Морская волна" — концерты, ярмарки.</li>
+          <li><span class="font-medium">Всё лето:</span> Морские экскурсии и вечерние шоу-фонтаны.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-6 mt-12">
+    <div class="text-center text-sm">© 2025 МойКрым.рф | Севастополь</div>
+  </footer>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
