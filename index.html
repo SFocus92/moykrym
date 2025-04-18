@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="description" content="Путеводитель по Крыму — города, отдых, жильё, еда, события. Севастополь, Ялта, Евпатория и другие. МойКрым.рф">
-  <meta name="keywords" content="Крым, отдых, туризм, Севастополь, Ялта, Евпатория, Симферополь, Алушта, Судак">
+  <meta name="keywords" content="Крым, отдых в Крыму, туризм, Севастополь, Ялта, Евпатория, Симферополь, Алушта, Судак, достопримечательности Крыма, пляжи Крыма">
+  <meta property="og:title" content="МойКрым.рф | Путеводитель по Крыму">
+  <meta property="og:description" content="Путеводитель по Крыму — города, отдых, жильё, еда, события. Севастополь, Ялта, Евпатория и другие.">
+  <meta property="og:image" content="/assets/img/sevastopol-slide.jpg">
+  <meta property="og:url" content="https://moykrym.rf/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="МойКрым.рф | Путеводитель по Крыму">
+  <meta name="twitter:description" content="Путеводитель по Крыму — города, отдых, жильё, еда, события. Севастополь, Ялта, Евпатория и другие.">
+  <meta name="twitter:image" content="/assets/img/sevastopol-slide.jpg">
   <title>МойКрым.рф | Путеводитель по Крыму</title>
   <link rel="icon" href="assets/img/icon.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -121,7 +130,6 @@
     .dark .indicator.active {
       background: #60a5fa;
     }
-    /* Стили для поиска */
     .search-results {
       position: absolute;
       top: 100%;
@@ -191,11 +199,19 @@
       .container { max-width: 1200px; }
     }
   </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXX-X');
+  </script>
 </head>
 <body class="text-gray-800">
   <header class="bg-white shadow py-4 mb-8 dark:bg-gray-900">
     <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
-      <h1 class="text-2xl sm:text-3xl font-bold text-blue-700 fade-in dark:text-blue-300">МойКрым.рф</h1>
+      <h1 class="text-2xl sm:text-3xl font-bold text-blue-700 fade-in dark:text-blue-300">МойКрым.рф — Путеводитель по Крыму</h1>
       <nav class="w-full sm:w-auto mt-2 sm:mt-0 flex items-center gap-4">
         <ul class="flex flex-wrap justify-center gap-3 text-sm sm:text-base">
           <li><a href="index.html" class="hover:text-blue-500 dark:hover:text-blue-300">Главная</a></li>
@@ -224,14 +240,15 @@
     <section class="text-center mb-8 fade-in">
       <h2 class="text-2xl sm:text-4xl font-bold mb-4 text-blue-900 dark:text-blue-200">Открой Крым вместе с нами</h2>
       <p class="text-md sm:text-lg text-gray-700 dark:text-gray-300">Выберите город и узнайте всё: жильё, еда, отдых, туризм</p>
+      <a href="#search" class="inline-block mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-400 dark:hover:bg-blue-500">Найти город</a>
     </section>
 
     <!-- Карусель -->
     <section class="mb-12 fade-in">
       <div class="carousel">
-        <img src="assets/img/sevastopol-slide.jpg" alt="Севастополь" class="active">
-        <img src="assets/img/yalta-slide.jpg" alt="Ялта">
-        <img src="assets/img/evpatoria-slide.jpg" alt="Евпатория">
+        <img src="assets/img/sevastopol-slide.jpg" alt="Севастополь" class="active" loading="lazy">
+        <img src="assets/img/yalta-slide.jpg" alt="Ялта" loading="lazy">
+        <img src="assets/img/evpatoria-slide.jpg" alt="Евпатория" loading="lazy">
         <button class="carousel-button prev"><i class="fas fa-chevron-left"></i></button>
         <button class="carousel-button next"><i class="fas fa-chevron-right"></i></button>
         <div class="carousel-indicators">
@@ -247,19 +264,19 @@
       <h2 class="text-2xl font-bold text-center mb-6 text-blue-900 dark:text-blue-200">Популярные направления</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
-          <img src="assets/img/sevastopol-popular.jpg" alt="Севастополь" class="w-full h-32 object-cover rounded-md mb-2">
+          <img src="assets/img/sevastopol-popular.jpg" alt="Севастополь" class="w-full h-32 object-cover rounded-md mb-2" loading="lazy">
           <h3 class="font-semibold dark:text-gray-200">Севастополь</h3>
           <p class="text-sm text-gray-600 dark:text-gray-400">Город-герой с историей и бухтами</p>
           <a href="cities/sevastopol.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
         </div>
         <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
-          <img src="assets/img/yalta-popular.jpg" alt="Ялта" class="w-full h-32 object-cover rounded-md mb-2">
+          <img src="assets/img/yalta-popular.jpg" alt="Ялта" class="w-full h-32 object-cover rounded-md mb-2" loading="lazy">
           <h3 class="font-semibold dark:text-gray-200">Ялта</h3>
           <p class="text-sm text-gray-600 dark:text-gray-400">Курорт с дворцами и набережной</p>
           <a href="cities/yalta.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
         </div>
         <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
-          <img src="assets/img/evpatoria-popular.jpg" alt="Евпатория" class="w-full h-32 object-cover rounded-md mb-2">
+          <img src="assets/img/evpatoria-popular.jpg" alt="Евпатория" class="w-full h-32 object-cover rounded-md mb-2" loading="lazy">
           <h3 class="font-semibold dark:text-gray-200">Евпатория</h3>
           <p class="text-sm text-gray-600 dark:text-gray-400">Песчаные пляжи и семейный отдых</p>
           <a href="cities/evpatoria.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
@@ -287,12 +304,34 @@
         <h3 class="text-xl font-semibold">Евпатория</h3>
       </a>
     </section>
+
+    <!-- Новая секция: Почему выбирают нас -->
+    <section class="mb-12 fade-in">
+      <h2 class="text-2xl font-bold text-center mb-6 text-blue-900 dark:text-blue-200">Почему выбирают МойКрым.рф</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
+          <i class="fas fa-map-marked-alt text-3xl text-blue-500 mb-2 dark:text-blue-300"></i>
+          <h3 class="font-semibold dark:text-gray-200">Полный путеводитель</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Все города Крыма: жильё, еда, экскурсии.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
+          <i class="fas fa-star text-3xl text-blue-500 mb-2 dark:text-blue-300"></i>
+          <h3 class="font-semibold dark:text-gray-200">Актуальная информация</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">События, цены и советы для туристов.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
+          <i class="fas fa-heart text-3xl text-blue-500 mb-2 dark:text-blue-300"></i>
+          <h3 class="font-semibold dark:text-gray-200">С любовью к Крыму</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Создано местными для незабываемого отдыха.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="bg-gray-800 text-white py-6 mt-12 dark:bg-gray-900">
     <div class="container mx-auto px-4 text-center text-sm space-y-2">
       <p>© <span id="current-year">2025</span> МойКрым.рф</p>
-      <p><a href="privacy.html" class="underline inunderline hover:text-blue-400">Политика конфиденциальности</a></p>
+      <p><a href="privacy.html" class="underline hover:text-blue-400">Политика конфиденциальности</a></p>
       <div class="flex justify-center gap-4">
         <a href="https://t.me/moykrym" target="_blank" class="hover:text-blue-400"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://vk.com/moykrym" target="_blank" class="hover:text-blue-400"><i class="fab fa-vk"></i></a>
