@@ -1,1 +1,200 @@
-1
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #ccefff, #ffffff);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+body.dark {
+  background: linear-gradient(to bottom, #1e3a8a, #111827);
+  color: #e5e7eb;
+}
+.city-button {
+  background: #ffffffcc;
+  border: 2px solid #0077b6;
+  color: #0077b6;
+  transition: all 0.3s ease;
+}
+.city-button:hover {
+  background-color: #0077b6;
+  color: #ffffff;
+  transform: scale(1.05) rotate(2deg);
+}
+.dark .city-button {
+  background: #1e40af;
+  border-color: #60a5fa;
+  color: #60a5fa;
+}
+.dark .city-button:hover {
+  background-color: #60a5fa;
+  color: #1e40af;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0077b6;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+.dark #to-top {
+  background: #60a5fa;
+}
+.carousel {
+  position: relative;
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.carousel img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: none;
+  transition: opacity 0.5s ease;
+}
+.carousel img.active {
+  display: block;
+  opacity: 1;
+}
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.indicator {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.indicator.active {
+  background: #ffffff;
+}
+.dark .indicator {
+  background: rgba(255, 255, 255, 0.3);
+}
+.dark .indicator.active {
+  background: #60a5fa;
+}
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 20;
+  display: none;
+}
+.dark .search-results {
+  background: #1f2937;
+  border-color: #4b5563;
+}
+.search-results a {
+  display: block;
+  padding: 8px 16px;
+  color: #374151;
+  text-decoration: none;
+}
+.dark .search-results a {
+  color: #d1d5db;
+}
+.search-results a:hover {
+  background: #e5e7eb;
+}
+.dark .search-results a:hover {
+  background: #374151;
+}
+.search-results p {
+  padding: 8px 16px;
+  color: #6b7280;
+}
+.dark .search-results p {
+  color: #9ca3af;
+}
+h1, h2, h3, p, li, a {
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+.dark h1, .dark h2, .dark h3, .dark p, .dark li, .dark a {
+  color: #e5e7eb;
+}
+.dark .bg-white {
+  background: #1f2937;
+}
+.dark .text-gray-600 {
+  color: #d1d5db;
+}
+.dark .text-gray-700 {
+  color: #d1d5db;
+}
+/* Стили для светлой темы */
+.welcome-section h2,
+.popular-section h2,
+.why-section h2 {
+  color: #1f2937; /* Тёмно-серый для заголовков */
+}
+.welcome-section p {
+  color: #1f2937; /* Тёмно-серый для параграфа */
+}
+.welcome-section a {
+  color: #0077b6; /* Яркий голубой для текста кнопки */
+  background-color: #ffffff; /* Белый фон */
+  border: 2px solid #1e3a8a; /* Тёмно-синяя рамка */
+  font-weight: bold; /* Жирный шрифт */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.welcome-section a:hover {
+  background-color: #e0f2fe; /* Светло-голубой фон при наведении */
+  color: #005f8c; /* Чуть темнее голубой */
+}
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.1rem; }
+  p, li, a { font-size: 1rem; }
+  .city-button { padding: 1rem; }
+  .carousel img { height: 300px; }
+}
+@media (min-width: 1024px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  .container { max-width: 1200px; }
+}
