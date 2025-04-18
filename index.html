@@ -18,7 +18,208 @@
   <link rel="icon" href="assets/img/icon.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #ccefff, #ffffff);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    body.dark {
+      background: linear-gradient(to bottom, #1e3a8a, #111827);
+      color: #e5e7eb;
+    }
+    .city-button {
+      background: #ffffffcc;
+      border: 2px solid #0077b6;
+      color: #0077b6;
+      transition: all 0.3s ease;
+    }
+    .city-button:hover {
+      background-color: #0077b6;
+      color: #ffffff;
+      transform: scale(1.05) rotate(2deg);
+    }
+    .dark .city-button {
+      background: #1e40af;
+      border-color: #60a5fa;
+      color: #60a5fa;
+    }
+    .dark .city-button:hover {
+      background-color: #60a5fa;
+      color: #1e40af;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0077b6;
+      color: white;
+      padding: 12px;
+      border-radius: 50%;
+      display: none;
+      transition: opacity 0.3s ease;
+    }
+    .dark #to-top {
+      background: #60a5fa;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-height: 500px;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .carousel img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: none;
+      transition: opacity 0.5s ease;
+    }
+    .carousel img.active {
+      display: block;
+      opacity: 1;
+    }
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .carousel-button:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+    .carousel-indicators {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+    .indicator {
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .indicator.active {
+      background: #ffffff;
+    }
+    .dark .indicator {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .dark .indicator.active {
+      background: #60a5fa;
+    }
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 20;
+      display: none;
+    }
+    .dark .search-results {
+      background: #1f2937;
+      border-color: #4b5563;
+    }
+    .search-results a {
+      display: block;
+      padding: 8px 16px;
+      color: #374151;
+      text-decoration: none;
+    }
+    .dark .search-results a {
+      color: #d1d5db;
+    }
+    .search-results a:hover {
+      background: #e5e7eb;
+    }
+    .dark .search-results a:hover {
+      background: #374151;
+    }
+    .search-results p {
+      padding: 8px 16px;
+      color: #6b7280;
+    }
+    .dark .search-results p {
+      color: #9ca3af;
+    }
+    h1, h2, h3, p, li, a {
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .dark h1, .dark h2, .dark h3, .dark p, .dark li, .dark a {
+      color: #e5e7eb;
+    }
+    .dark .bg-white {
+      background: #1f2937;
+    }
+    .dark .text-gray-600 {
+      color: #d1d5db;
+    }
+    .dark .text-gray-700 {
+      color: #d1d5db;
+    }
+    /* Стили для светлой темы */
+    .welcome-section h2,
+    .popular-section h2,
+    .why-section h2 {
+      color: #1f2937; /* Тёмно-серый для заголовков */
+    }
+    .welcome-section p {
+      color: #1f2937; /* Тёмно-серый для параграфа */
+    }
+    .welcome-section a {
+      color: #0077b6; /* Яркий голубой для текста кнопки */
+      background-color: #ffffff; /* Белый фон */
+      border: 2px solid #1e3a8a; /* Тёмно-синяя рамка */
+      font-weight: bold; /* Жирный шрифт */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .welcome-section a:hover {
+      background-color: #e0f2fe; /* Светло-голубой фон при наведении */
+      color: #005f8c; /* Чуть темнее голубой */
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.25rem; }
+      h3 { font-size: 1.1rem; }
+      p, li, a { font-size: 1rem; }
+      .city-button { padding: 1rem; }
+      .carousel img { height: 300px; }
+    }
+    @media (min-width: 1024px) {
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 2rem; }
+      .container { max-width: 1200px; }
+    }
+  </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
   <script>
@@ -56,98 +257,98 @@
         <div id="search-results" class="search-results"></div>
       </div>
     </section>
+<!-- Секция "Открой Крым вместе с нами" -->
+<section class="text-center mb-8 fade-in welcome-section">
+  <h2 class="text-2xl sm:text-4xl font-bold mb-4">Открой Крым вместе с нами</h2>
+  <p class="text-md sm:text-lg">Выберите город и узнайте всё: жильё, еда, отдых, туризм</p>
+  <a href="#search" class="inline-block mt-4 px-6 py-3 rounded-lg">Найти город</a>
+</section>
 
-    <!-- Секция "Открой Крым вместе с нами" -->
-    <section class="text-center mb-8 fade-in welcome-section">
-      <h2 class="text-2xl sm:text-4xl font-bold mb-4">Открой Крым вместе с нами</h2>
-      <p class="text-md sm:text-lg">Выберите город и узнайте всё: жильё, еда, отдых, туризм</p>
-      <a href="#search" class="inline-block mt-4 px-6 py-3 rounded-lg">Найти город</a>
-    </section>
+<!-- Карусель -->
+<section class="mb-12 fade-in">
+  <div class="carousel">
+    <img src="assets/img/sevastopol-slide.jpg" alt="Севастополь" class="active" loading="lazy">
+    <img src="assets/img/yalta-slide.jpg" alt="Ялта" loading="lazy">
+    <img src="assets/img/evpatoria-slide.jpg" alt="Евпатория" loading="lazy">
+    <button class="carousel-button prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-button next"><i class="fas fa-chevron-right"></i></button>
+    <div class="carousel-indicators">
+      <span class="indicator active"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+    </div>
+  </div>
+</section>
 
-    <!-- Карусель -->
-    <section class="mb-12 fade-in">
-      <div class="carousel">
-        <img src="assets/img/sevastopol-slide.jpg" alt="Севастополь" class="active" loading="lazy">
-        <img src="assets/img/yalta-slide.jpg" alt="Ялта" loading="lazy">
-        <img src="assets/img/evpatoria-slide.jpg" alt="Евпатория" loading="lazy">
-        <button class="carousel-button prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="carousel-button next"><i class="fas fa-chevron-right"></i></button>
-        <div class="carousel-indicators">
-          <span class="indicator active"></span>
-          <span class="indicator"></span>
-          <span class="indicator"></span>
-        </div>
-      </div>
-    </section>
+<!-- Популярные направления -->
+<section class="mb-12 fade-in popular-section">
+  <h2 class="text-2xl font-bold text-center mb-6">Популярные направления</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
+      <img src="assets/img/sevastopol-popular.jpg" alt="Севастополь" class="w-full h-32 object-cover rounded-md mb-2" loading="lazy">
+      <h3 class="font-semibold dark:text-gray-200">Севастополь</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Город-герой с историей и бухтами</p>
+      <a href="cities/sevastopol.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
+      <img src="assets/img/yalta-popular.jpg" alt="Ялта" class="w-full h-32 object-cover rounded-md mb-2" loading="lazy">
+      <h3 class="font-semibold dark:text-gray-200">Ялта</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Курорт с дворцами и набережной</p>
+      <a href="cities/yalta.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
+      <img src="assets/img/evpatoria-popular.jpg" alt="Евпатория" class="w-full h-32 object-cover rounded-md mb-2" loading="lazy">
+      <h3 class="font-semibold dark:text-gray-200">Евпатория</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Песчаные пляжи и семейный отдых</p>
+      <a href="cities/evpatoria.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
+    </div>
+  </div>
+</section>
 
-    <!-- Популярные направления -->
-    <section class="mb-12 fade-in popular-section">
-      <h2 class="text-2xl font-bold text-center mb-6">Популярные направления</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
-          <img src="assets/img/sevastopol-popular.jpg" alt="Севастополь" class="w-full h-32 object-cover rounded-md mb-2" loading="lazy">
-          <h3 class="font-semibold dark:text-gray-200">Севастополь</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Город-герой с историей и бухтами</p>
-          <a href="cities/sevastopol.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
-          <img src="assets/img/yalta-popular.jpg" alt="Ялта" class="w-full h-32 object-cover rounded-md mb-2" loading="lazy">
-          <h3 class="font-semibold dark:text-gray-200">Ялта</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Курорт с дворцами и набережной</p>
-          <a href="cities/yalta.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
-          <img src="assets/img/evpatoria-popular.jpg" alt="Евпатория" class="w-full h-32 object-cover rounded-md mb-2" loading="lazy">
-          <h3 class="font-semibold dark:text-gray-200">Евпатория</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Песчаные пляжи и семейный отдых</p>
-          <a href="cities/evpatoria.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
-        </div>
-      </div>
-    </section>
+<!-- Города -->
+<section class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 text-center fade-in">
+  <a href="cities/sevastopol.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
+    <h3 class="text-xl font-semibold">Севастополь</h3>
+  </a>
+  <a href="cities/yalta.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
+    <h3 class="text-xl font-semibold">Ялта</h3>
+  </a>
+  <a href="cities/simferopol.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
+    <h3 class="text-xl font-semibold">Симферополь</h3>
+  </a>
+  <a href="cities/alushta.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
+    <h3 class="text-xl font-semibold">Алушта</h3>
+  </a>
+  <a href="cities/sudak.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
+    <h3 class="text-xl font-semibold">Судак</h3>
+  </a>
+  <a href="cities/evpatoria.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
+    <h3 class="text-xl font-semibold">Евпатория</h3>
+  </a>
+</section>
 
-    <!-- Города -->
-    <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 text-center fade-in">
-      <a href="cities/sevastopol.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
-        <h3 class="text-xl font-semibold">Севастополь</h3>
-      </a>
-      <a href="cities/yalta.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
-        <h3 class="text-xl font-semibold">Ялта</h3>
-      </a>
-      <a href="cities/simferopol.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
-        <h3 class="text-xl font-semibold">Симферополь</h3>
-      </a>
-      <a href="cities/alushta.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
-        <h3 class="text-xl font-semibold">Алушта</h3>
-      </a>
-      <a href="cities/sudak.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
-        <h3 class="text-xl font-semibold">Судак</h3>
-      </a>
-      <a href="cities/evpatoria.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
-        <h3 class="text-xl font-semibold">Евпатория</h3>
-      </a>
-    </section>
+<!-- Почему выбирают МойКрым.рф -->
+<section class="mb-12 fade-in why-section">
+  <h2 class="text-2xl font-bold text-center mb-6">Почему выбирают МойКрым.рф</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
+      <i class="fas fa-map-marked-alt text-3xl text-blue-500 mb-2 dark:text-blue-300"></i>
+      <h3 class="font-semibold dark:text-gray-200">Полный путеводитель</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Все города Крыма: жильё, еда, экскурсии.</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
+      <i class="fas fa-star text-3xl text-blue-500 mb-2 dark:text-blue-300"></i>
+      <h3 class="font-semibold dark:text-gray-200">Актуальная информация</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">События, цены и советы для туристов.</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
+      <i class="fas fa-heart text-3xl text-blue-500 mb-2 dark:text-blue-300"></i>
+      <h3 class="font-semibold dark:text-gray-200">С любовью к Крыму</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Создано местными для незабываемого отдыха.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Почему выбирают МойКрым.рф -->
-    <section class="mb-12 fade-in why-section">
-      <h2 class="text-2xl font-bold text-center mb-6">Почему выбирают МойКрым.рф</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
-          <i class="fas fa-map-marked-alt text-3xl text-blue-500 mb-2 dark:text-blue-300"></i>
-          <h3 class="font-semibold dark:text-gray-200">Полный путеводитель</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Все города Крыма: жильё, еда, экскурсии.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
-          <i class="fas fa-star text-3xl text-blue-500 mb-2 dark:text-blue-300"></i>
-          <h3 class="font-semibold dark:text-gray-200">Актуальная информация</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">События, цены и советы для туристов.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
-          <i class="fas fa-heart text-3xl text-blue-500 mb-2 dark:text-blue-300"></i>
-          <h3 class="font-semibold dark:text-gray-200">С любовью к Крыму</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Создано местными для незабываемого отдыха.</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="bg-gray-800 text-white py-6 mt-12 dark:bg-gray-900">
@@ -163,7 +364,118 @@
     </div>
   </footer>
 
-  <button id="to-top" title="Наверх"><i class="fas fa-arrow-up"></i></button>
-  <script defer src="assets/js/main.js"></script>
+  <button id="to-top" title="Наверх"><i class="fas fa-arrow-up"></i></button>  <script>
+    // Темная тема
+    const toggleThemeButton = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = toggleThemeButton.querySelector('i');
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      body.classList.add('dark');
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+    toggleThemeButton.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const isDark = body.classList.contains('dark');
+      themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Карусель
+    const carouselImages = document.querySelectorAll('.carousel img');
+    const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    let currentIndex = 0;
+    function showSlide(index) {
+      carouselImages.forEach(img => img.classList.remove('active'));
+      indicators.forEach(ind => ind.classList.remove('active'));
+      carouselImages[index].classList.add('active');
+      indicators[index].classList.add('active');
+      currentIndex = index;
+    }
+    prevButton.addEventListener('click', () => {
+      let newIndex = currentIndex - 1;
+      if (newIndex < 0) newIndex = carouselImages.length - 1;
+      showSlide(newIndex);
+    });
+    nextButton.addEventListener('click', () => {
+      let newIndex = (currentIndex + 1) % carouselImages.length;
+      showSlide(newIndex);
+    });
+    indicators.forEach((ind, i) => {
+      ind.addEventListener('click', () => showSlide(i));
+    });
+    setInterval(() => {
+      let newIndex = (currentIndex + 1) % carouselImages.length;
+      showSlide(newIndex);
+    }, 5000);
+
+    // Поиск
+    const cities = [
+      { name: 'Севастополь', url: 'cities/sevastopol.html' },
+      { name: 'Ялта', url: 'cities/yalta.html' },
+      { name: 'Симферополь', url: 'cities/simferopol.html' },
+      { name: 'Алушта', url: 'cities/alushta.html' },
+      { name: 'Судак', url: 'cities/sudak.html' },
+      { name: 'Евпатория', url: 'cities/evpatoria.html' }
+    ];
+    const searchInput = document.getElementById('search');
+    const searchResults = document.getElementById('search-results');
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      searchResults.innerHTML = '';
+      if (query.length === 0) {
+        searchResults.style.display = 'none';
+        return;
+      }
+      const filteredCities = cities.filter(city => city.name.toLowerCase().includes(query));
+      if (filteredCities.length > 0) {
+        filteredCities.forEach(city => {
+          const link = document.createElement('a');
+          link.href = city.url;
+          link.textContent = city.name;
+          searchResults.appendChild(link);
+        });
+      } else {
+        const noResults = document.createElement('p');
+        noResults.textContent = 'Ничего не найдено';
+        searchResults.appendChild(noResults);
+      }
+      searchResults.style.display = 'block';
+    });
+    document.addEventListener('click', (e) => {
+      if (!searchResults.contains(e.target) && e.target !== searchInput) {
+        searchResults.style.display = 'none';
+      }
+    });
+
+    // Анимация появления элементов
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, index * 200);
+      });
+    });
+
+    // Кнопка "Наверх"
+    const toTop = document.getElementById('to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        toTop.style.display = 'block';
+      } else {
+        toTop.style.display = 'none';
+      }
+    });
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Динамический год в футере
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
