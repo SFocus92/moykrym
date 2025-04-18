@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Севастополь | МойКрым.рф</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax Plan/AJAX/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -114,9 +114,87 @@
     .dark .text-gray-800 {
       color: #e5e7eb;
     }
+    /* Стили для нового раздела скалолазов */
+    .climbing-section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #ffffffcc;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dark .climbing-section {
+      background: #1f2937;
+    }
+    .climbing-section h4 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #1e40af;
+    }
+    .dark .climbing-section h4 {
+      color: #60a5fa;
+    }
+    .climbing-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #374151;
+    }
+    .dark .climbing-section p {
+      color: #d1d5db;
+    }
+    .telegram-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #0077b6;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .telegram-link:hover {
+      background-color: #005f8c;
+    }
+    .dark .telegram-link {
+      background-color: #60a5fa;
+    }
+    .dark .telegram-link:hover {
+      background-color: #3b82f6;
+    }
+    .climbing-carousel {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 1rem;
+    }
+    .climbing-carousel img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: none;
+      transition: opacity 0.5s ease;
+    }
+    .climbing-carousel img.active {
+      display: block;
+      opacity: 1;
+    }
     @media (max-width: 640px) {
-      .carousel img { height: 200px; }
-      .carousel { height: 200px; }
+      .carousel img, .climbing-carousel img {
+        height: 200px;
+      }
+      .carousel, .climbing-carousel {
+        height: 200px;
+      }
+      .climbing-section h4 {
+        font-size: 1.25rem;
+      }
+      .climbing-section p {
+        font-size: 1rem;
+      }
     }
   </style>
   <!-- Google Analytics -->
@@ -211,6 +289,44 @@
           <li>Балаклавская бухта и подземный музей подводных лодок.</li>
           <li>Круизы по Севастопольской бухте на катере.</li>
         </ul>
+        <!-- Новый раздел для скалолазов -->
+        <div class="climbing-section">
+          <h4 class="dark:text-gray-200">Скалолазание с профессионалами в Севастополе</h4>
+          <p class="dark:text-gray-400">
+            Хотите покорить скалы Севастополя и ощутить настоящий драйв? Присоединяйтесь к нашей команде профессиональных скалолазов! 
+            Наши инструкторы — сертифицированные мастера, которые проведут вас по самым живописным маршрутам Крыма, от скал Фиолента до утёсов Балаклавы. 
+            Мы любим походы, активный отдых и приключения, и готовы поделиться этой страстью с вами! 
+            Независимо от уровня подготовки, мы обеспечим безопасность, поддержку и незабываемые впечатления. 
+            Подписывайтесь на нашу Telegram-группу, чтобы узнать о тренировках, походах и новых маршрутах!
+          </p>
+          <a href="https://t.me/+QLBVE3-mFOw5NGIy" class="telegram-link" target="_blank">Присоединиться к Telegram-группе</a>
+          <div class="climbing-carousel">
+            <img src="../assets/img/climbing1.jpg" alt="Скалолазание Фиолент" class="active">
+            <img src="../assets/img/climbing2.jpg" alt="Тренировки в Балаклаве">
+            <img src="../assets/img/climbing3.jpg" alt="Поход на скалы">
+            <img src="../assets/img/climbing4.jpg" alt="Групповое скалолазание">
+            <img src="../assets/img/climbing5.jpg" alt="Закат на скалах">
+            <img src="../assets/img/climbing6.jpg" alt="Новички на маршруте">
+            <img src="../assets/img/climbing7.jpg" alt="Профессиональный инструктор">
+            <img src="../assets/img/climbing8.jpg" alt="Крымские пейзажи">
+            <img src="../assets/img/climbing9.jpg" alt="Активный отдых">
+            <img src="../assets/img/climbing10.jpg" alt="Команда скалолазов">
+            <button class="carousel-button prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-button next"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-indicators">
+              <span class="indicator active"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div id="events" class="tab-content">
@@ -244,34 +360,61 @@
       document.body.classList.add('dark');
     }
 
-    // Карусель
+    // Карусель для герой-секции
     const carouselImages = document.querySelectorAll('.carousel img');
-    const indicators = document.querySelectorAll('.carousel-indicators .indicator');
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
+    const indicators = document.querySelectorAll('.carousel .carousel-indicators .indicator');
+    const prevButton = document.querySelector('.carousel .prev');
+    const nextButton = document.querySelector('.carousel .next');
     let currentIndex = 0;
-    function showSlide(index) {
+    function showSlide(index, carouselImages, indicators) {
       carouselImages.forEach(img => img.classList.remove('active'));
       indicators.forEach(ind => ind.classList.remove('active'));
       carouselImages[index].classList.add('active');
       indicators[index].classList.add('active');
-      currentIndex = index;
+      return index;
     }
     prevButton.addEventListener('click', () => {
       let newIndex = currentIndex - 1;
       if (newIndex < 0) newIndex = carouselImages.length - 1;
-      showSlide(newIndex);
+      currentIndex = showSlide(newIndex, carouselImages, indicators);
     });
     nextButton.addEventListener('click', () => {
       let newIndex = (currentIndex + 1) % carouselImages.length;
-      showSlide(newIndex);
+      currentIndex = showSlide(newIndex, carouselImages, indicators);
     });
     indicators.forEach((ind, i) => {
-      ind.addEventListener('click', () => showSlide(i));
+      ind.addEventListener('click', () => {
+        currentIndex = showSlide(i, carouselImages, indicators);
+      });
     });
     setInterval(() => {
       let newIndex = (currentIndex + 1) % carouselImages.length;
-      showSlide(newIndex);
+      currentIndex = showSlide(newIndex, carouselImages, indicators);
+    }, 5000);
+
+    // Карусель для скалолазов
+    const climbingImages = document.querySelectorAll('.climbing-carousel img');
+    const climbingIndicators = document.querySelectorAll('.climbing-carousel .carousel-indicators .indicator');
+    const climbingPrevButton = document.querySelector('.climbing-carousel .prev');
+    const climbingNextButton = document.querySelector('.climbing-carousel .next');
+    let climbingIndex = 0;
+    prevButton.addEventListener('click', () => {
+      let newIndex = climbingIndex - 1;
+      if (newIndex < 0) newIndex = climbingImages.length - 1;
+      climbingIndex = showSlide(newIndex, climbingImages, climbingIndicators);
+    });
+    nextButton.addEventListener('click', () => {
+      let newIndex = (climbingIndex + 1) % climbingImages.length;
+      climbingIndex = showSlide(newIndex, climbingImages, climbingIndicators);
+    });
+    climbingIndicators.forEach((ind, i) => {
+      ind.addEventListener('click', () => {
+        climbingIndex = showSlide(i, climbingImages, climbingIndicators);
+      });
+    });
+    setInterval(() => {
+      let newIndex = (climbingIndex + 1) % climbingImages.length;
+      climbingIndex = showSlide(newIndex, climbingImages, climbingIndicators);
     }, 5000);
 
     // Табы
