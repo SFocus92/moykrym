@@ -1,1 +1,133 @@
-.
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Портал о Крыме — города, отдых, жильё, еда, события. Евпатория, Севастополь, Ялта, Алушта, Судак. МойКрым.рф">
+  <meta name="keywords" content="Евпатория, отдых в Крыму, жильё, пляжи, Севастополь, Ялта, туризм Крым">
+  <meta name="author" content="МойКрым.рф">
+  <meta property="og:title" content="МойКрым.рф — Всё про отдых в Евпатории">
+  <meta property="og:image" content="/assets/img/evpatoria-hero.jpg">
+  <meta property="og:description" content="Узнай всё о Евпатории — жильё, туры, кафе, достопримечательности.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Евпатория | МойКрым.рф</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .tab-button.active {
+      @apply border-b-2 border-blue-600 text-blue-600;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.4s ease-in; }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXX-X');
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-white shadow py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <a href="../index.html" class="text-blue-600 font-bold text-xl">← Назад</a>
+      <h1 class="text-2xl font-bold">Евпатория</h1>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 mt-6">
+    <section class="mb-6">
+      <img src="../assets/img/evpatoria-hero.jpg" alt="Евпатория" class="w-full h-64 object-cover rounded-xl shadow">
+      <h2 class="text-3xl font-bold mt-4 mb-2">Курортная Евпатория</h2>
+      <p class="text-gray-600">Солнечный город на западе Крыма с песчаными пляжами, историей и семейным отдыхом.</p>
+    </section>
+
+    <section class="mb-8">
+      <ul class="flex flex-wrap gap-2 border-b pb-2 mb-4">
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 active" onclick="openTab('about')">О городе</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('hotels')">Жильё</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('food')">Кафе</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('tourism')">Туризм</button></li>
+        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600" onclick="openTab('events')">События</button></li>
+      </ul>
+
+      <div id="about" class="tab-content active">
+        <h3 class="text-xl font-semibold mb-2">Общее описание</h3>
+        <p>Евпатория — популярный курорт на западном побережье Крыма, известный своими песчаными пляжами, лечебными грязями и богатой историей. Город сочетает античные, средневековые и современные достопримечательности, такие как Гезлёвские ворота, Караимские кенасы и набережная Горького.</p>
+      </div>
+
+      <div id="hotels" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Аренда жилья</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-bold">Отель "Ривьера"</h4>
+            <p class="text-sm">Центр города, 3 звезды, бассейн. от 3800₽/сутки.</p>
+          </li>
+          <li class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-bold">Апартаменты "Солнечный берег"</h4>
+            <p class="text-sm">У пляжа, кухня, Wi-Fi. от 2700₽/сутки.</p>
+          </li>
+          <li class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-bold">Гостевой дом "Лазурь"</h4>
+            <p class="text-sm">Тихий район, парковка, для семей. от 2300₽/сутки.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div id="food" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Кафе и рестораны</h3>
+        <ul class="space-y-4">
+          <li>
+            <h4 class="font-bold">"Море и Вино"</h4>
+            <p class="text-sm">Рыбные блюда, вид на море. Средний чек: 1400₽.</p>
+          </li>
+          <li>
+            <h4 class="font-bold">"Татарская кухня"</h4>
+            <p class="text-sm">Плов, чебуреки, лагман. Чек: 800₽.</p>
+          </li>
+          <li>
+            <h4 class="font-bold">"Кофе на песке"</h4>
+            <p class="text-sm">Кофейня с восточным колоритом. Чек: 450₽.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div id="tourism" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Туризм и экскурсии</h3>
+        <ul class="list-disc pl-5">
+          <li>Караимские кенасы — памятник караимской культуры.</li>
+          <li>Мечеть Джума-Джами — историческая архитектура.</li>
+          <li>Озеро Мойнаки — лечебные грязи и солёная вода.</li>
+        </ul>
+      </div>
+
+      <div id="events" class="tab-content">
+        <h3 class="text-xl font-semibold mb-2">Ближайшие события</h3>
+        <ul class="space-y-2">
+          <li><span class="font-medium">1 июня:</span> Фестиваль "Детская волна" — семейные мероприятия.</li>
+          <li><span class="font-medium">15 августа:</span> Праздник "Курортный сезон" — концерты, ярмарки.</li>
+          <li><span class="font-medium">Всё лето:</span> Театральные шоу и анимация на набережной.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-6 mt-12">
+    <div class="text-center text-sm">© 2025 МойКрым.рф | Евпатория</div>
+  </footer>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
