@@ -8,18 +8,40 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/ВАШ_КОД.js" crossorigin="anonymous"></script> <!-- FontAwesome -->
   <style>
+    body { transition: background-color 0.3s, color 0.3s; }
     .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Кнопка "Наверх" */
+    #to-top {
+      position: fixed;
+      bottom: 6px;
+      right: 6px;
+      background-color: #1E40AF; /* Цвет кнопки */
+      color: white;
+      border-radius: 50%;
+      padding: 12px;
+      font-size: 20px;
+      cursor: pointer;
+      display: none; /* Скрыта по умолчанию */
+    }
+    #to-top i {
+      font-size: 20px;
+    }
+    #to-top:hover {
+      background-color: #2563EB;
+    }
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white">
 
   <!-- Хедер -->
-  <header class="bg-white shadow p-4 dark:bg-gray-800 dark:shadow-lg">
+  <header class="bg-white shadow p-4 dark:bg-gray-800 dark:shadow-md">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <h1 class="text-2xl font-bold">МойКрым.рф</h1>
       <nav class="space-x-4">
         <a href="index.html" class="hover:text-blue-500">Главная</a>
+        <a href="services.html" class="hover:text-blue-500">Услуги</a>
         <a href="contacts.html" class="text-blue-600 font-semibold underline">Контакты</a>
       </nav>
     </div>
@@ -27,12 +49,6 @@
 
   <main class="max-w-7xl mx-auto p-6">
     <h2 class="text-3xl font-bold text-center mb-8 fade-in">Связаться с нами</h2>
-
-    <!-- Карта -->
-    <div class="mb-12 rounded-lg overflow-hidden shadow-md fade-in">
-      <iframe src="https://yandex.ru/map-widget/v1/?ll=33.630164%2C44.619825&mode=poi&poi%5Bpoint%5D=33.524275%2C44.618380&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D58354816334&z=12.02" 
-              width="100%" height="400" frameborder="0" allowfullscreen></iframe>
-    </div>
 
     <!-- Соцсети -->
     <div class="flex justify-center gap-8 text-3xl mb-12 fade-in">
@@ -44,9 +60,9 @@
 
     <!-- Форма -->
     <form action="https://formspree.io/f/YOUR_ID" method="POST" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 max-w-xl mx-auto space-y-6 fade-in">
-      <input type="text" name="name" placeholder="Ваше имя" required class="w-full border p-3 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-      <input type="email" name="_replyto" placeholder="Ваш Email" required class="w-full border p-3 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-      <textarea name="message" placeholder="Ваше сообщение" required class="w-full border p-3 rounded h-40 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+      <input type="text" name="name" placeholder="Ваше имя" required class="w-full border border-gray-300 p-3 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <input type="email" name="_replyto" placeholder="Ваш Email" required class="w-full border border-gray-300 p-3 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <textarea name="message" placeholder="Ваше сообщение" required class="w-full border border-gray-300 p-3 rounded h-40 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
       <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded w-full font-semibold">Отправить</button>
     </form>
   </main>
@@ -65,7 +81,8 @@
     </div>
   </footer>
 
-  <button id="to-top" title="Наверх" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hidden">
+  <!-- Кнопка "Наверх" -->
+  <button id="to-top" title="Наверх">
     <i class="fas fa-arrow-up"></i>
   </button>
 
@@ -82,15 +99,17 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Кнопка "Наверх"
+    // Показ кнопки "Наверх" при скролле
     const toTop = document.getElementById('to-top');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        toTop.classList.remove('hidden');
+        toTop.style.display = 'block'; // Показать кнопку
       } else {
-        toTop.classList.add('hidden');
+        toTop.style.display = 'none'; // Скрыть кнопку
       }
     });
+
+    // Прокрутка вверх при нажатии на кнопку
     toTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
