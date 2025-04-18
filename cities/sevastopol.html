@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -13,8 +13,211 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="../assets/img/icon.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="../assets/css/styles.css">
-  <link rel="stylesheet" href="../assets/css/sevastopol.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #ccefff, #ffffff);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    body.dark {
+      background: linear-gradient(to bottom, #1e3a8a, #111827);
+      color: #e5e7eb;
+    }
+    .tab-button.active {
+      @apply border-b-2 border-blue-600 text-blue-600;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.4s ease-in; }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 256px;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .carousel img {
+      width: 100%;
+      height: 256px;
+      object-fit: cover;
+      display: none;
+      transition: opacity 0.5s ease;
+    }
+    .carousel img.active {
+      display: block;
+      opacity: 1;
+    }
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 8px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .carousel-button:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+    .carousel-indicators {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+    .indicator {
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .indicator.active {
+      background: #ffffff;
+    }
+    .dark .indicator {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .dark .indicator.active {
+      background: #60a5fa;
+    }
+    .back-button {
+      color: #0077b6;
+      font-weight: bold;
+      font-size: 1.25rem;
+      transition: color 0.3s ease;
+    }
+    .back-button:hover {
+      color: #005f8c;
+    }
+    .dark .back-button {
+      color: #60a5fa;
+    }
+    .dark .back-button:hover {
+      color: #3b82f6;
+    }
+    .dark .bg-white {
+      background: #1f2937;
+    }
+    .dark .text-gray-600 {
+      color: #d1d5db;
+    }
+    .dark .text-gray-800 {
+      color: #e5e7eb;
+    }
+    /* Стили для раздела скалолазов */
+    .climbing-section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #ffffffcc;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dark .climbing-section {
+      background: #1f2937;
+    }
+    .climbing-section h4 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #1e40af;
+    }
+    .dark .climbing-section h4 {
+      color: #60a5fa;
+    }
+    .climbing-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #374151;
+    }
+    .dark .climbing-section p {
+      color: #d1d5db;
+    }
+    .telegram-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #0077b6;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .telegram-link:hover {
+      background-color: #005f8c;
+    }
+    .dark .telegram-link {
+      background-color: #60a5fa;
+    }
+    .dark .telegram-link:hover {
+      background-color: #3b82f6;
+    }
+    .climbing-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      height: 720px;
+      margin: 1rem auto;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .climbing-carousel img {
+      width: 100%;
+      height: 720px;
+      object-fit: contain;
+      object-position: center;
+      display: none;
+      transition: opacity 0.5s ease;
+      background-color: #f8f8f8;
+    }
+    .dark .climbing-carousel img {
+      background-color: #1f2937;
+    }
+    .climbing-carousel img.active {
+      display: block;
+      opacity: 1;
+    }
+    @media (max-width: 1024px) {
+      .climbing-carousel {
+        height: 540px;
+      }
+      .climbing-carousel img {
+        height: 540px;
+      }
+    }
+    @media (max-width: 640px) {
+      .carousel img {
+        height: 200px;
+      }
+      .carousel {
+        height: 200px;
+      }
+      .climbing-carousel {
+        height: 360px;
+      }
+      .climbing-carousel img {
+        height: 360px;
+      }
+      .climbing-section h4 {
+        font-size: 1.25rem;
+      }
+      .climbing-section p {
+        font-size: 1rem;
+      }
+    }
+  </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
   <script>
@@ -49,115 +252,115 @@
       <h2 class="text-3xl font-bold mt-4 mb-2 dark:text-gray-200">Город-герой Севастополь</h2>
       <p class="text-gray-600 dark:text-gray-400">Исторический город на юго-западе Крыма с бухтами, флотом, музеями и морем.</p>
     </section>
+<section class="mb-8">
+  <ul class="flex flex-wrap gap-2 border-b pb-2 mb-4">
+    <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-300 active" onclick="openTab('about')">О городе</button></li>
+    <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-300" onclick="openTab('hotels')">Жильё</button></li>
+    <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-300" onclick="openTab('food')">Кафе</button></li>
+    <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-300" onclick="openTab('tourism')">Туризм</button></li>
+    <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-300" onclick="openTab('events')">События</button></li>
+  </ul>
 
-    <section class="mb-8">
-      <ul class="flex flex-wrap gap-2 border-b pb-2 mb-4">
-        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-300 active" onclick="openTab('about')">О городе</button></li>
-        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-300" onclick="openTab('hotels')">Жильё</button></li>
-        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-300" onclick="openTab('food')">Кафе</button></li>
-        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-300" onclick="openTab('tourism')">Туризм</button></li>
-        <li><button class="tab-button px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-300" onclick="openTab('events')">События</button></li>
-      </ul>
+  <div id="about" class="tab-content active">
+    <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Общее описание</h3>
+    <p class="dark:text-gray-400">Севастополь — крупнейший порт Крыма и база Черноморского флота. Город богат на исторические памятники, музеи и пляжи. Среди главных достопримечательностей — Херсонес Таврический, Панорама обороны Севастополя и Малахов курган.</p>
+  </div>
 
-      <div id="about" class="tab-content active">
-        <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Общее описание</h3>
-        <p class="dark:text-gray-400">Севастополь — крупнейший порт Крыма и база Черноморского флота. Город богат на исторические памятники, музеи и пляжи. Среди главных достопримечательностей — Херсонес Таврический, Панорама обороны Севастополя и Малахов курган.</p>
-      </div>
+  <div id="hotels" class="tab-content">
+    <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Аренда жилья</h3>
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <li class="bg-white p-4 rounded-lg shadow dark:bg-gray-800">
+        <h4 class="font-bold dark:text-gray-200">Гостиница "Атлантида"</h4>
+        <p class="text-sm dark:text-gray-400">Центр города, 4 звезды, вид на бухту. от 4200₽/сутки.</p>
+      </li>
+      <li class="bg-white p-4 rounded-lg shadow dark:bg-gray-800">
+        <h4 class="font-bold dark:text-gray-200">Апартаменты "Морская Звезда"</h4>
+        <p class="text-sm dark:text-gray-400">Рядом с пляжем Омега. Кухня, Wi-Fi. от 2900₽/сутки.</p>
+      </li>
+      <li class="bg-white p-4 rounded-lg shadow dark:bg-gray-800">
+        <h4 class="font-bold dark:text-gray-200">Гостевой дом "Уют"</h4>
+        <p class="text-sm dark:text-gray-400">Для семей с детьми, парковка. от 2500₽/сутки.</p>
+      </li>
+    </ul>
+  </div>
 
-      <div id="hotels" class="tab-content">
-        <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Аренда жилья</h3>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li class="bg-white p-4 rounded-lg shadow dark:bg-gray-800">
-            <h4 class="font-bold dark:text-gray-200">Гостиница "Атлантида"</h4>
-            <p class="text-sm dark:text-gray-400">Центр города, 4 звезды, вид на бухту. от 4200₽/сутки.</p>
-          </li>
-          <li class="bg-white p-4 rounded-lg shadow dark:bg-gray-800">
-            <h4 class="font-bold dark:text-gray-200">Апартаменты "Морская Звезда"</h4>
-            <p class="text-sm dark:text-gray-400">Рядом с пляжем Омега. Кухня, Wi-Fi. от 2900₽/сутки.</p>
-          </li>
-          <li class="bg-white p-4 rounded-lg shadow dark:bg-gray-800">
-            <h4 class="font-bold dark:text-gray-200">Гостевой дом "Уют"</h4>
-            <p class="text-sm dark:text-gray-400">Для семей с детьми, парковка. от 2500₽/сутки.</p>
-          </li>
-        </ul>
-      </div>
+  <div id="food" class="tab-content">
+    <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Кафе и рестораны</h3>
+    <ul class="space-y-4">
+      <li>
+        <h4 class="font-bold dark:text-gray-200">"Fish Point"</h4>
+        <p class="text-sm dark:text-gray-400">Морская кухня с видом на Балаклаву. Средний чек: 1500₽.</p>
+      </li>
+      <li>
+        <h4 class="font-bold dark:text-gray-200">"Крымский дворик"</h4>
+        <p class="text-sm dark:text-gray-400">Домашняя кухня, живое вино, шашлык. Чек: 900₽.</p>
+      </li>
+      <li>
+        <h4 class="font-bold dark:text-gray-200">"Эспрессо-бар 1941"</h4>
+        <p class="text-sm dark:text-gray-400">Кофейня в стиле ретро. Завтраки, десерты. Чек: 500₽.</p>
+      </li>
+    </ul>
+  </div>
 
-      <div id="food" class="tab-content">
-        <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Кафе и рестораны</h3>
-        <ul class="space-y-4">
-          <li>
-            <h4 class="font-bold dark:text-gray-200">"Fish Point"</h4>
-            <p class="text-sm dark:text-gray-400">Морская кухня с видом на Балаклаву. Средний чек: 1500₽.</p>
-          </li>
-          <li>
-            <h4 class="font-bold dark:text-gray-200">"Крымский дворик"</h4>
-            <p class="text-sm dark:text-gray-400">Домашняя кухня, живое вино, шашлык. Чек: 900₽.</p>
-          </li>
-          <li>
-            <h4 class="font-bold dark:text-gray-200">"Эспрессо-бар 1941"</h4>
-            <p class="text-sm dark:text-gray-400">Кофейня в стиле ретро. Завтраки, десерты. Чек: 500₽.</p>
-          </li>
-        </ul>
-      </div>
-
-      <div id="tourism" class="tab-content">
-        <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Туризм и экскурсии</h3>
-        <ul class="list-disc pl-5 dark:text-gray-400">
-          <li>Херсонес Таврический — античные руины у моря.</li>
-          <li>Балаклавская бухта и подземный музей подводных лодок.</li>
-          <li>Круизы по Севастопольской бухте на катере.</li>
-        </ul>
-        <!-- Новый раздел для скалолазов -->
-        <div class="climbing-section">
-          <h4 class="dark:text-gray-200">Скалолазание с профессионалами в Севастополе</h4>
-          <p class="dark:text-gray-400">
-            Хотите покорить скалы Севастополя и ощутить настоящий драйв? Присоединяйтесь к нашей команде профессиональных скалолазов! 
-            Наши инструкторы — сертифицированные мастера, которые проведут вас по самым живописным маршрутам Крыма, от скал Фиолента до утёсов Балаклавы. 
-            Мы любим походы, активный отдых и приключения, и готовы поделиться этой страстью с вами! 
-            Независимо от уровня подготовки, мы обеспечим безопасность, поддержку и незабываемые впечатления. 
-            Подписывайтесь на нашу Telegram-группу, чтобы узнать о тренировках, походах и новых маршрутах!
-          </p>
-          <a href="https://t.me/+QLBVE3-mFOw5NGIy" class="telegram-link" target="_blank">Присоединиться к Решительным</a>
-          <div class="climbing-carousel">
-            <img src="../assets/img/climbing1.jpg" alt="Скалолазание Фиолент" class="active">
-            <img src="../assets/img/climbing2.jpg" alt="Тренировки в Балаклаве">
-            <img src="../assets/img/climbing3.jpg" alt="Поход на скалы">
-            <img src="../assets/img/climbing4.jpg" alt="Групповое скалолазание">
-            <img src="../assets/img/climbing5.jpg" alt="Закат на скалах">
-            <img src="../assets/img/climbing6.jpg" alt="Новички на маршруте">
-            <img src="../assets/img/climbing7.jpg" alt="Профессиональный инструктор">
-            <img src="../assets/img/climbing8.jpg" alt="Крымские пейзажи">
-            <img src="../assets/img/climbing9.jpg" alt="Активный отдых">
-            <img src="../assets/img/climbing10.jpg" alt="Команда скалолазов">
-            <img src="../assets/img/climbing11.jpg" alt="Скалы Севастополя">
-            <button class="carousel-button prev"><i class="fas fa-chevron-left"></i></button>
-            <button class="carousel-button next"><i class="fas fa-chevron-right"></i></button>
-            <div class="carousel-indicators">
-              <span class="indicator active"></span>
-              <span class="indicator"></span>
-              <span class="indicator"></span>
-              <span class="indicator"></span>
-              <span class="indicator"></span>
-              <span class="indicator"></span>
-              <span class="indicator"></span>
-              <span class="indicator"></span>
-              <span class="indicator"></span>
-              <span class="indicator"></span>
-              <span class="indicator"></span>
-            </div>
-          </div>
+  <div id="tourism" class="tab-content">
+    <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Туризм и экскурсии</h3>
+    <ul class="list-disc pl-5 dark:text-gray-400">
+      <li>Херсонес Таврический — античные руины у моря.</li>
+      <li>Балаклавская бухта и подземный музей подводных лодок.</li>
+      <li>Круизы по Севастопольской бухте на катере.</li>
+    </ul>
+    <!-- Новый раздел для скалолазов -->
+    <div class="climbing-section">
+      <h4 class="dark:text-gray-200">Скалолазание с профессионалами в Севастополе</h4>
+      <p class="dark:text-gray-400">
+        Хотите покорить скалы Севастополя и ощутить настоящий драйв? Присоединяйтесь к нашей команде профессиональных скалолазов! 
+        Наши инструкторы — сертифицированные мастера, которые проведут вас по самым живописным маршрутам Крыма, от скал Фиолента до утёсов Балаклавы. 
+        Мы любим походы, активный отдых и приключения, и готовы поделиться этой страстью с вами! 
+        Независимо от уровня подготовки, мы обеспечим безопасность, поддержку и незабываемые впечатления. 
+        Подписывайтесь на нашу Telegram-группу, чтобы узнать о тренировках, походах и новых маршрутах!
+      </p>
+      <a href="https://t.me/+QLBVE3-mFOw5NGIy" class="telegram-link" target="_blank">Присоединиться к Решительным</a>
+      <div class="climbing-carousel">
+        <img src="../assets/img/climbing1.jpg" alt="Скалолазание Фиолент" class="active">
+        <img src="../assets/img/climbing2.jpg" alt="Тренировки в Балаклаве">
+        <img src="../assets/img/climbing3.jpg" alt="Поход на скалы">
+        <img src="../assets/img/climbing4.jpg" alt="Групповое скалолазание">
+        <img src="../assets/img/climbing5.jpg" alt="Закат на скалах">
+        <img src="../assets/img/climbing6.jpg" alt="Новички на маршруте">
+        <img src="../assets/img/climbing7.jpg" alt="Профессиональный инструктор">
+        <img src="../assets/img/climbing8.jpg" alt="Крымские пейзажи">
+        <img src="../assets/img/climbing9.jpg" alt="Активный отдых">
+        <img src="../assets/img/climbing10.jpg" alt="Команда скалолазов">
+        <img src="../assets/img/climbing11.jpg" alt="Скалы Севастополя">
+        <button class="carousel-button prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-button next"><i class="fas fa-chevron-right"></i></button>
+        <div class="carousel-indicators">
+          <span class="indicator active"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div id="events" class="tab-content">
-        <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Ближайшие события</h3>
-        <ul class="space-y-2 dark:text-gray-400">
-          <li><span class="font-medium dark:text-gray-200">9 мая:</span> Парад Победы на набережной Корнилова.</li>
-          <li><span class="font-medium dark:text-gray-200">25 июля:</span> Фестиваль "Морская волна" — концерты, ярмарки.</li>
-          <li><span class="font-medium dark:text-gray-200">Всё лето:</span> Морские экскурсии и вечерние шоу-фонтаны.</li>
-        </ul>
-      </div>
-    </section>
+  <div id="events" class="tab-content">
+    <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Ближайшие события</h3>
+    <ul class="space-y-2 dark:text-gray-400">
+      <li><span class="font-medium dark:text-gray-200">9 мая:</span> Парад Победы на набережной Корнилова.</li>
+      <li><span class="font-medium dark:text-gray-200">25 июля:</span> Фестиваль "Морская волна" — концерты, ярмарки.</li>
+      <li><span class="font-medium dark:text-gray-200">Всё лето:</span> Морские экскурсии и вечерние шоу-фонтаны.</li>
+    </ul>
+  </div>
+</section>
+
   </main>
 
   <footer class="bg-gray-800 text-white py-6 mt-12 dark:bg-gray-900">
@@ -173,7 +376,64 @@
     </div>
   </footer>
 
-  <script defer src="../assets/js/main.js"></script>
-  <script defer src="../assets/js/sevastopol.js"></script>
+  <script>
+    // Проверка сохранённой темы
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark');
+    }
+
+    // Универсальная функция для каруселей
+    function initCarousel(carouselSelector, imagesSelector, indicatorsSelector, prevSelector, nextSelector) {
+      const images = document.querySelectorAll(imagesSelector);
+      const indicators = document.querySelectorAll(indicatorsSelector);
+      const prevButton = document.querySelector(prevSelector);
+      const nextButton = document.querySelector(nextSelector);
+      let currentIndex = 0;
+
+      function showSlide(index) {
+        images.forEach(img => img.classList.remove('active'));
+        indicators.forEach(ind => ind.classList.remove('active'));
+        images[index].classList.add('active');
+        indicators[index].classList.add('active');
+        currentIndex = index;
+      }
+
+      prevButton.addEventListener('click', () => {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) newIndex = images.length - 1;
+        showSlide(newIndex);
+      });
+
+      nextButton.addEventListener('click', () => {
+        let newIndex = (currentIndex + 1) % images.length;
+        showSlide(newIndex);
+      });
+
+      indicators.forEach((ind, i) => {
+        ind.addEventListener('click', () => showSlide(i));
+      });
+
+      setInterval(() => {
+        let newIndex = (currentIndex + 1) % images.length;
+        showSlide(newIndex);
+      }, 5000);
+    }
+
+    // Инициализация карусели для герой-секции
+    initCarousel('.carousel', '.carousel img', '.carousel .carousel-indicators .indicator', '.carousel .prev', '.carousel .next');
+
+    // Инициализация карусели для скалолазов
+    initCarousel('.climbing-carousel', '.climbing-carousel img', '.climbing-carousel .carousel-indicators .indicator', '.climbing-carousel .prev', '.climbing-carousel .next');
+
+    // Табы
+    function openTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 </html>
+
