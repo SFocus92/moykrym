@@ -1,10 +1,4 @@
-// Проверка сохранённой темы
-const savedTheme = localStorage.getItem('theme') || 'light';
-if (savedTheme === 'dark') {
-  document.body.classList.add('dark');
-}
-
-// Универсальная функция для каруселей
+/* assets/js/sevastopol.js */
 function initCarousel(carouselSelector, imagesSelector, indicatorsSelector, prevSelector, nextSelector) {
   const images = document.querySelectorAll(imagesSelector);
   const indicators = document.querySelectorAll(indicatorsSelector);
@@ -41,16 +35,6 @@ function initCarousel(carouselSelector, imagesSelector, indicatorsSelector, prev
   }, 5000);
 }
 
-// Инициализация карусели для герой-секции
-initCarousel('.carousel', '.carousel img', '.carousel .carousel-indicators .indicator', '.carousel .prev', '.carousel .next');
-
-// Инициализация карусели для скалолазов
+// Инициализация каруселей
+initCarousel('.carousel', '.carousel img', '.carousel-indicators .indicator', '.carousel .prev', '.carousel .next');
 initCarousel('.climbing-carousel', '.climbing-carousel img', '.climbing-carousel .carousel-indicators .indicator', '.climbing-carousel .prev', '.climbing-carousel .next');
-
-// Табы
-function openTab(tabId) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
-  document.getElementById(tabId).classList.add('active');
-  event.target.classList.add('active');
-}
