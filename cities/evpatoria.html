@@ -236,8 +236,13 @@
       <p>Создано с любовью к Крыму</p>
     </div>
   </footer>
+   <script>
+    // Проверка сохранённой темы
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark');
+    }
 
-  <script>
     // Карусель
     const carouselImages = document.querySelectorAll('.carousel img');
     const indicators = document.querySelectorAll('.carousel-indicators .indicator');
