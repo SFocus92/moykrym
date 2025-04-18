@@ -19,62 +19,22 @@
     <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
       <a href="index.html" class="text-blue-600 font-bold text-xl hover:underline">← Назад</a>
       <h1 class="text-2xl font-bold">Блог</h1>
+      <!-- Кнопка для переключения темы -->
+      <button id="theme-toggle" class="bg-gray-300 p-2 rounded-full dark:bg-gray-700">
+        <i id="theme-icon" class="fas fa-sun"></i>
+      </button>
     </div>
   </header>
 
   <!-- Основной контент -->
   <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
-    
     <!-- Статьи -->
     <article class="bg-white dark:bg-gray-800 p-6 rounded shadow fade-in">
       <h2 class="text-2xl font-semibold text-blue-700">5 причин поехать в Крым весной</h2>
       <p class="text-sm text-gray-500 mb-2">12 апреля 2025</p>
       <p>Весна в Крыму — это цветущие горы, тёплое солнце и почти пустые пляжи. Идеальное время для прогулок и экскурсий!</p>
     </article>
-
-    <article class="bg-white dark:bg-gray-800 p-6 rounded shadow fade-in">
-      <h2 class="text-2xl font-semibold text-blue-700">Новые маршруты на ЮБК</h2>
-      <p class="text-sm text-gray-500 mb-2">5 апреля 2025</p>
-      <p>Добавлены новые экскурсии по Южному Берегу Крыма. Старинные усадьбы, тропы и винодельни — всё в одном туре!</p>
-    </article>
-
-    <!-- Новые статьи по городам -->
-    <article class="bg-white dark:bg-gray-800 p-6 rounded shadow fade-in">
-      <h2 class="text-2xl font-semibold text-blue-700">Что посмотреть в Судаке</h2>
-      <p class="text-sm text-gray-500 mb-2">1 апреля 2025</p>
-      <p>Генуэзская крепость, пляжи с чистейшей водой и уникальные тропы ждут гостей Судака. Лучшее место для активного отдыха!</p>
-    </article>
-
-    <article class="bg-white dark:bg-gray-800 p-6 rounded shadow fade-in">
-      <h2 class="text-2xl font-semibold text-blue-700">Алушта: жемчужина Крыма</h2>
-      <p class="text-sm text-gray-500 mb-2">28 марта 2025</p>
-      <p>Тёплое море, горные походы и уютные улочки Алушты создают незабываемую атмосферу для туристов в любое время года.</p>
-    </article>
-
-    <article class="bg-white dark:bg-gray-800 p-6 rounded shadow fade-in">
-      <h2 class="text-2xl font-semibold text-blue-700">Ялта: сердце Южного Берега</h2>
-      <p class="text-sm text-gray-500 mb-2">25 марта 2025</p>
-      <p>Ласточкино гнездо, набережная Ялты и шикарные дворцы — всё это стоит увидеть своими глазами!</p>
-    </article>
-
-    <article class="bg-white dark:bg-gray-800 p-6 rounded shadow fade-in">
-      <h2 class="text-2xl font-semibold text-blue-700">Севастополь: город-герой</h2>
-      <p class="text-sm text-gray-500 mb-2">20 марта 2025</p>
-      <p>История на каждом шагу, музеи, бухты и закаты Севастополя оставят неизгладимые впечатления у каждого путешественника.</p>
-    </article>
-
-    <article class="bg-white dark:bg-gray-800 p-6 rounded shadow fade-in">
-      <h2 class="text-2xl font-semibold text-blue-700">Евпатория: старинный курорт</h2>
-      <p class="text-sm text-gray-500 mb-2">18 марта 2025</p>
-      <p>Узкие улочки старого города, мечети и синагоги, тёплое море — Евпатория подходит для семейного отдыха с детьми.</p>
-    </article>
-
-    <article class="bg-white dark:bg-gray-800 p-6 rounded shadow fade-in">
-      <h2 class="text-2xl font-semibold text-blue-700">Симферополь: ворота Крыма</h2>
-      <p class="text-sm text-gray-500 mb-2">15 марта 2025</p>
-      <p>Главный транспортный узел Крыма, уютные парки и музеи — Симферополь заслуживает отдельного визита и изучения!</p>
-    </article>
-
+    <!-- Прочие статьи... -->
   </main>
 
   <!-- Футер -->
@@ -109,7 +69,6 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-   <script>
     // Проверка сохраненной темы при загрузке страницы
     document.addEventListener('DOMContentLoaded', () => {
       if (localStorage.getItem('theme') === 'dark') {
@@ -137,17 +96,6 @@
         themeIcon.classList.add('fa-sun');
       }
     });
-
-    // Анимация появления при скролле
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     // Показ кнопки "Наверх" при скролле
     const toTop = document.getElementById('to-top');
