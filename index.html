@@ -185,6 +185,27 @@
     .dark .text-gray-700 {
       color: #d1d5db;
     }
+    /* Стили для светлой темы */
+    .welcome-section h2,
+    .popular-section h2,
+    .why-section h2 {
+      color: #1e3a8a; /* Тёмно-синий для заголовков */
+    }
+    .welcome-section p {
+      color: #1e3a8a; /* Тёмно-синий для параграфа */
+    }
+    .welcome-section a {
+      color: #0077b6; /* Яркий голубой для текста кнопки */
+      background-color: #ffffff; /* Белый фон */
+      border: 2px solid #1e3a8a; /* Тёмно-синяя рамка */
+      font-weight: bold; /* Жирный шрифт */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .welcome-section a:hover {
+      background-color: #e0f2fe; /* Светло-голубой фон при наведении */
+      color: #005f8c; /* Чуть темнее голубой */
+    }
     @media (max-width: 640px) {
       h1 { font-size: 1.5rem; }
       h2 { font-size: 1.25rem; }
@@ -237,11 +258,12 @@
       </div>
     </section>
 
+    <!-- Секция "Открой Крым вместе с нами" -->
     <section class="text-center mb-8 fade-in welcome-section">
-    <h2 class="text-2xl sm:text-4xl font-bold mb-4">Открой Крым вместе с нами</h2>
-    <p class="text-md sm:text-lg">Выберите город и узнайте всё: жильё, еда, отдых, туризм</p>
-    <a href="#search" class="inline-block mt-4 px-6 py-3 rounded-lg">Найти город</a>
-   </section>
+      <h2 class="text-2xl sm:text-4xl font-bold mb-4">Открой Крым вместе с нами</h2>
+      <p class="text-md sm:text-lg">Выберите город и узнайте всё: жильё, еда, отдых, туризм</p>
+      <a href="#search" class="inline-block mt-4 px-6 py-3 rounded-lg">Найти город</a>
+    </section>
 
     <!-- Карусель -->
     <section class="mb-12 fade-in">
@@ -260,8 +282,8 @@
     </section>
 
     <!-- Популярные направления -->
-    <section class="mb-12 fade-in">
-      <h2 class="text-2xl font-bold text-center mb-6 text-blue-900 dark:text-blue-200">Популярные направления</h2>
+    <section class="mb-12 fade-in popular-section">
+      <h2 class="text-2xl font-bold text-center mb-6">Популярные направления</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
           <img src="assets/img/sevastopol-popular.jpg" alt="Севастополь" class="w-full h-32 object-cover rounded-md mb-2" loading="lazy">
@@ -284,6 +306,7 @@
       </div>
     </section>
 
+    <!-- Города -->
     <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 text-center fade-in">
       <a href="cities/sevastopol.html" class="city-button rounded-xl p-6 shadow-md hover:shadow-lg">
         <h3 class="text-xl font-semibold">Севастополь</h3>
@@ -305,9 +328,9 @@
       </a>
     </section>
 
-    <!-- Новая секция: Почему выбирают нас -->
-    <section class="mb-12 fade-in">
-      <h2 class="text-2xl font-bold text-center mb-6 text-blue-900 dark:text-blue-200">Почему выбирают МойКрым.рф</h2>
+    <!-- Почему выбирают МойКрым.рф -->
+    <section class="mb-12 fade-in why-section">
+      <h2 class="text-2xl font-bold text-center mb-6">Почему выбирают МойКрым.рф</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
           <i class="fas fa-map-marked-alt text-3xl text-blue-500 mb-2 dark:text-blue-300"></i>
