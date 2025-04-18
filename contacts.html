@@ -94,6 +94,10 @@
     <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
       <a href="index.html" class="text-blue-600 font-bold text-xl hover:underline">← Назад</a>
       <h1 class="text-2xl font-bold">Контакты</h1>
+      <!-- Переключатель темы -->
+      <button id="theme-toggle" class="bg-gray-300 p-2 rounded-full dark:bg-gray-700">
+        <i id="theme-icon" class="fas fa-sun"></i>
+      </button>
     </div>
   </header>
 
@@ -155,6 +159,34 @@
 
   <!-- Скрипты -->
   <script>
+    // Проверка сохраненной темы при загрузке страницы
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+      } else {
+        document.body.classList.remove('dark');
+      }
+    });
+
+    // Переключатель темы
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      
+      // Сохранение выбранной темы
+      if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+    });
+
     // Анимация появления при скролле
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
