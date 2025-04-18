@@ -59,23 +59,16 @@
       display: none;
       transition: opacity 0.3s ease;
     }
-    #to-top:hover {
-      background: #005f8c;
-    }
     .dark #to-top {
       background: #60a5fa;
     }
-    .dark #to-top:hover {
-      background: #3b82f6;
-    }
-    /* Стили для карусели */
     .carousel {
       position: relative;
       width: 100%;
       max-height: 500px;
       overflow: hidden;
       border-radius: 0.75rem;
-      box-shadow: 0 4px 6px rgba(...)
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .carousel img {
       width: 100%;
@@ -128,6 +121,46 @@
     .dark .indicator.active {
       background: #60a5fa;
     }
+    /* Стили для поиска */
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 20;
+      display: none;
+    }
+    .dark .search-results {
+      background: #1f2937;
+      border-color: #4b5563;
+    }
+    .search-results a {
+      display: block;
+      padding: 8px 16px;
+      color: #374151;
+      text-decoration: none;
+    }
+    .dark .search-results a {
+      color: #d1d5db;
+    }
+    .search-results a:hover {
+      background: #e5e7eb;
+    }
+    .dark .search-results a:hover {
+      background: #374151;
+    }
+    .search-results p {
+      padding: 8px 16px;
+      color: #6b7280;
+    }
+    .dark .search-results p {
+      color: #9ca3af;
+    }
     h1, h2, h3, p, li, a {
       font-size: 1.1rem;
       transition: color 0.3s ease;
@@ -160,17 +193,16 @@
   </style>
 </head>
 <body class="text-gray-800">
-  <header class="bg-white shadow py-4 mb-8">
+  <header class="bg-white shadow py-4 mb-8 dark:bg-gray-900">
     <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
-      <h1 class="text-2xl sm:text-3xl font-bold text-blue-700 fade-in">МойКрым.рф</h1>
+      <h1 class="text-2xl sm:text-3xl font-bold text-blue-700 fade-in dark:text-blue-300">МойКрым.рф</h1>
       <nav class="w-full sm:w-auto mt-2 sm:mt-0 flex items-center gap-4">
         <ul class="flex flex-wrap justify-center gap-3 text-sm sm:text-base">
-          <li><a href="index.html" class="hover:text-blue-500">Главная</a></li>
-          <li><a href="blog.html" class="hover:text-blue-500">Блог</a></li>
-          <li><a href="privacy.html" class="hover:text-blue-500">Политика</a></li>
+          <li><a href="index.html" class="hover:text-blue-500 dark:hover:text-blue-300">Главная</a></li>
+          <li><a href="blog.html" class="hover:text-blue-500 dark:hover:text-blue-300">Блог</a></li>
+          <li><a href="privacy.html" class="hover:text-blue-500 dark:hover:text-blue-300">Политика</a></li>
         </ul>
-        <!-- Кнопка переключения темы -->
-        <button id="theme-toggle" class="text-blue-700 hover:text-blue-500" title="Переключить тему">
+        <button id="theme-toggle" class="text-blue-700 hover:text-blue-500 dark:text-blue-300 dark:hover:text-blue-400" title="Переключить тему">
           <i class="fas fa-moon"></i>
         </button>
       </nav>
@@ -185,12 +217,13 @@
         <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-blue-500 dark:text-gray-200">
           <i class="fas fa-search"></i>
         </button>
+        <div id="search-results" class="search-results"></div>
       </div>
     </section>
 
     <section class="text-center mb-8 fade-in">
-      <h2 class="text-2xl sm:text-4xl font-bold mb-4 text-blue-900">Открой Крым вместе с нами</h2>
-      <p class="text-md sm:text-lg text-gray-700">Выберите город и узнайте всё: жильё, еда, отдых, туризм</p>
+      <h2 class="text-2xl sm:text-4xl font-bold mb-4 text-blue-900 dark:text-blue-200">Открой Крым вместе с нами</h2>
+      <p class="text-md sm:text-lg text-gray-700 dark:text-gray-300">Выберите город и узнайте всё: жильё, еда, отдых, туризм</p>
     </section>
 
     <!-- Карусель -->
@@ -211,25 +244,25 @@
 
     <!-- Популярные направления -->
     <section class="mb-12 fade-in">
-      <h2 class="text-2xl font-bold text-center mb-6 text-blue-900">Популярные направления</h2>
+      <h2 class="text-2xl font-bold text-center mb-6 text-blue-900 dark:text-blue-200">Популярные направления</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-white rounded-lg shadow-md p-4 text-center">
+        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
           <img src="assets/img/sevastopol-popular.jpg" alt="Севастополь" class="w-full h-32 object-cover rounded-md mb-2">
-          <h3 class="font-semibold">Севастополь</h3>
-          <p class="text-sm text-gray-600">Город-герой с историей и бухтами</p>
-          <a href="cities/sevastopol.html" class="text-blue-500 hover:underline text-sm">Подробнее</a>
+          <h3 class="font-semibold dark:text-gray-200">Севастополь</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Город-герой с историей и бухтами</p>
+          <a href="cities/sevastopol.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
         </div>
-        <div class="bg-white rounded-lg shadow-md p-4 text-center">
+        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
           <img src="assets/img/yalta-popular.jpg" alt="Ялта" class="w-full h-32 object-cover rounded-md mb-2">
-          <h3 class="font-semibold">Ялта</h3>
-          <p class="text-sm text-gray-600">Курорт с дворцами и набережной</p>
-          <a href="cities/yalta.html" class="text-blue-500 hover:underline text-sm">Подробнее</a>
+          <h3 class="font-semibold dark:text-gray-200">Ялта</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Курорт с дворцами и набережной</p>
+          <a href="cities/yalta.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
         </div>
-        <div class="bg-white rounded-lg shadow-md p-4 text-center">
+        <div class="bg-white rounded-lg shadow-md p-4 text-center dark:bg-gray-800">
           <img src="assets/img/evpatoria-popular.jpg" alt="Евпатория" class="w-full h-32 object-cover rounded-md mb-2">
-          <h3 class="font-semibold">Евпатория</h3>
-          <p class="text-sm text-gray-600">Песчаные пляжи и семейный отдых</p>
-          <a href="cities/evpatoria.html" class="text-blue-500 hover:underline text-sm">Подробнее</a>
+          <h3 class="font-semibold dark:text-gray-200">Евпатория</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Песчаные пляжи и семейный отдых</p>
+          <a href="cities/evpatoria.html" class="text-blue-500 hover:underline text-sm dark:text-blue-300 dark:hover:text-blue-400">Подробнее</a>
         </div>
       </div>
     </section>
@@ -259,7 +292,7 @@
   <footer class="bg-gray-800 text-white py-6 mt-12 dark:bg-gray-900">
     <div class="container mx-auto px-4 text-center text-sm space-y-2">
       <p>© <span id="current-year">2025</span> МойКрым.рф</p>
-      <p><a href="privacy.html" class="underline hover:text-blue-400">Политика конфиденциальности</a></p>
+      <p><a href="privacy.html" class="underline inunderline hover:text-blue-400">Политика конфиденциальности</a></p>
       <div class="flex justify-center gap-4">
         <a href="https://t.me/moykrym" target="_blank" class="hover:text-blue-400"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://vk.com/moykrym" target="_blank" class="hover:text-blue-400"><i class="fab fa-vk"></i></a>
@@ -269,7 +302,6 @@
     </div>
   </footer>
 
-  <!-- Кнопка "Наверх" -->
   <button id="to-top" title="Наверх"><i class="fas fa-arrow-up"></i></button>
 
   <script>
@@ -319,6 +351,45 @@
       showSlide(newIndex);
     }, 5000);
 
+    // Поиск
+    const cities = [
+      { name: 'Севастополь', url: 'cities/sevastopol.html' },
+      { name: 'Ялта', url: 'cities/yalta.html' },
+      { name: 'Симферополь', url: 'cities/simferopol.html' },
+      { name: 'Алушта', url: 'cities/alushta.html' },
+      { name: 'Судак', url: 'cities/sudak.html' },
+      { name: 'Евпатория', url: 'cities/evpatoria.html' }
+    ];
+    const searchInput = document.getElementById('search');
+    const searchResults = document.getElementById('search-results');
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      searchResults.innerHTML = '';
+      if (query.length === 0) {
+        searchResults.style.display = 'none';
+        return;
+      }
+      const filteredCities = cities.filter(city => city.name.toLowerCase().includes(query));
+      if (filteredCities.length > 0) {
+        filteredCities.forEach(city => {
+          const link = document.createElement('a');
+          link.href = city.url;
+          link.textContent = city.name;
+          searchResults.appendChild(link);
+        });
+      } else {
+        const noResults = document.createElement('p');
+        noResults.textContent = 'Ничего не найдено';
+        searchResults.appendChild(noResults);
+      }
+      searchResults.style.display = 'block';
+    });
+    document.addEventListener('click', (e) => {
+      if (!searchResults.contains(e.target) && e.target !== searchInput) {
+        searchResults.style.display = 'none';
+      }
+    });
+
     // Анимация появления элементов
     document.addEventListener('DOMContentLoaded', () => {
       const elements = document.querySelectorAll('.fade-in');
@@ -344,12 +415,6 @@
 
     // Динамический год в футере
     document.getElementById('current-year').textContent = new Date().getFullYear();
-
-    // Простой поиск (заглушка)
-    document.getElementById('search').addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase();
-      console.log('Поиск:', query);
-    });
   </script>
 </body>
 </html>
