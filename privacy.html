@@ -2,49 +2,169 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Политика конфиденциальности | МойКрым.рф</title>
+  <meta name="description" content="Политика конфиденциальности портала МойКрым.рф — защита персональных данных пользователей.">
+  <meta name="keywords" content="Крым, МойКрым, политика конфиденциальности, защита данных">
+  <meta name="author" content="МойКрым.рф">
+  <meta property="og:title" content="Политика конфиденциальности | МойКрым.рф">
+  <meta property="og:image" content="assets/img/icon.png">
+  <meta property="og:description" content="Узнайте, как МойКрым.рф собирает, использует и защищает ваши персональные данные.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Политика конфиденциальности | МойКрым.рф</title>
+  <link rel="icon" href="assets/img/icon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #ccefff, #ffffff);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    body.dark {
+      background: linear-gradient(to bottom, #1e3a8a, #111827);
+      color: #e5e7eb;
+    }
+    #to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0077b6;
+      color: white;
+      padding: 12px;
+      border-radius: 50%;
+      display: none;
+      transition: opacity 0.3s ease;
+    }
+    .dark #to-top {
+      background: #60a5fa;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .dark .bg-white { background: #1f2937; }
+    .dark .text-gray-600 { color: #d1d5db; }
+    .dark .text-gray-800 { color: #e5e7eb; }
+    .dark .bg-gray-800 { background: #111827; }
+    .dark h1, .dark h2, .dark h3, .dark h4 { color: #e5e7eb; }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.25rem; }
+      h3 { font-size: 1.1rem; }
+      p, li, a { font-size: 1rem; }
+    }
+  </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXX-X');
+  </script>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <header class="bg-white shadow py-4">
+<body class="text-gray-800">
+  <header class="bg-white shadow py-4 dark:bg-gray-900">
     <div class="container mx-auto px-4 flex justify-between items-center">
-      <a href="index.html" class="text-blue-600 font-bold text-xl">← Назад</a>
-      <h1 class="text-2xl font-bold">Политика конфиденциальности</h1>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="text-blue-700 hover:text-blue-500 dark:text-blue-300 dark:hover:text-blue-400 font-bold text-xl">← Назад</a>
+        <h1 class="text-2xl font-bold text-blue-700 dark:text-blue-300">Политика конфиденциальности</h1>
+      </div>
+      <button id="theme-toggle" class="text-blue-700 hover:text-blue-500 dark:text-blue-300 dark:hover:text-blue-400" title="Переключить тему">
+        <i class="fas fa-moon"></i>
+      </button>
     </div>
   </header>
 
   <main class="container mx-auto px-4 py-8 max-w-3xl">
-    <h2 class="text-xl font-semibold mb-4">1. Общие положения</h2>
-    <p class="mb-4">Настоящая Политика конфиденциальности регулирует порядок сбора, использования, хранения и защиты персональных данных пользователей сайта МойКрым.рф.</p>
+    <section class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 dark:text-gray-200">1. Общие положения</h2>
+      <p class="mb-4 text-gray-600 dark:text-gray-400">Настоящая Политика конфиденциальности регулирует порядок сбора, использования, хранения и защиты персональных данных пользователей сайта МойКрым.рф.</p>
 
-    <h2 class="text-xl font-semibold mb-4">2. Сбор данных</h2>
-    <p class="mb-4">Мы можем собирать следующие данные: имя, email, телефон, IP-адрес и другие технические данные. Это происходит при заполнении форм и через системы аналитики (например, Google Analytics).</p>
+      <h2 class="text-xl font-semibold mb-4 dark:text-gray-200">2. Сбор данных</h2>
+      <p class="mb-4 text-gray-600 dark:text-gray-400">Мы можем собирать следующие данные: имя, email, телефон, IP-адрес и другие технические данные. Это происходит при заполнении форм и через системы аналитики (например, Google Analytics).</p>
 
-    <h2 class="text-xl font-semibold mb-4">3. Использование данных</h2>
-    <p class="mb-4">Персональные данные используются только для связи с пользователем, предоставления информации и улучшения качества сервиса.</p>
+      <h2 class="text-xl font-semibold mb-4 dark:text-gray-200">3. Использование данных</h2>
+      <p class="mb-4 text-gray-600 dark:text-gray-400">Персональные данные используются только для связи с пользователем, предоставления информации и улучшения качества сервиса.</p>
 
-    <h2 class="text-xl font-semibold mb-4">4. Защита данных</h2>
-    <p class="mb-4">Мы принимаем все разумные меры для защиты персональных данных пользователей от несанкционированного доступа.</p>
+      <h2 class="text-xl font-semibold mb-4 dark:text-gray-200">4. Защита данных</h2>
+      <p class="mb-4 text-gray-600 dark:text-gray-400">Мы принимаем все разумные меры для защиты персональных данных пользователей от несанкционированного доступа.</p>
 
-    <h2 class="text-xl font-semibold mb-4">5. Передача данных третьим лицам</h2>
-    <p class="mb-4">Данные не передаются третьим лицам, за исключением случаев, предусмотренных законодательством РФ.</p>
+      <h2 class="text-xl font-semibold mb-4 dark:text-gray-200">5. Передача данных третьим лицам</h2>
+      <p class="mb-4 text-gray-600 dark:text-gray-400">Данные не передаются третьим лицам, за исключением случаев, предусмотренных законодательством РФ.</p>
 
-    <h2 class="text-xl font-semibold mb-4">6. Использование файлов Cookies</h2>
-    <p class="mb-4">Сайт может использовать файлы cookie для персонализации и аналитики. Вы можете отключить их в настройках браузера.</p>
+      <h2 class="text-xl font-semibold mb-4 dark:text-gray-200">6. Использование файлов Cookies</h2>
+      <p class="mb-4 text-gray-600 dark:text-gray-400">Сайт может использовать файлы cookie для персонализации и аналитики. Вы можете отключить их в настройках браузера.</p>
 
-    <h2 class="text-xl font-semibold mb-4">7. Согласие пользователя</h2>
-    <p class="mb-4">Используя сайт, пользователь соглашается с настоящей Политикой конфиденциальности.</p>
+      <h2 class="text-xl font-semibold mb-4 dark:text-gray-200">7. Согласие пользователя</h2>
+      <p class="mb-4 text-gray-600 dark:text-gray-400">Используя сайт, пользователь соглашается с настоящей Политикой конфиденциальности.</p>
 
-    <h2 class="text-xl font-semibold mb-4">8. Обратная связь</h2>
-    <p class="mb-4">По вопросам защиты данных вы можете связаться с нами через <a href="contact.html" class="text-blue-600 underline">форму обратной связи</a>.</p>
+      <h2 class="text-xl font-semibold mb-4 dark:text-gray-200">8. Обратная связь</h2>
+      <p class="mb-4 text-gray-600 dark:text-gray-400">По вопросам защиты данных вы можете связаться с нами через <a href="https://t.me/moykrym" class="text-blue-600 underline hover:text-blue-500 dark:text-blue-300 dark:hover:text-blue-400">Telegram</a>.</p>
+    </section>
   </main>
 
-  <footer class="bg-gray-800 text-white py-6 mt-12">
+  <footer class="bg-gray-800 text-white py-6 mt-12 dark:bg-gray-900">
     <div class="container mx-auto px-4 text-center text-sm space-y-2">
-      <p>© 2025 МойКрым.рф</p>
-      <p>Политика конфиденциальности</p>
+      <p>© <span id="current-year">2025</span> МойКрым.рф</p>
+      <p><a href="privacy.html" class="underline hover:text-blue-400">Политика конфиденциальности</a></p>
+      <div class="flex justify-center gap-4">
+        <a href="https://t.me/moykrym" target="_blank" class="hover:text-blue-400"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://vk.com/moykrym" target="_blank" class="hover:text-blue-400"><i class="fab fa-vk"></i></a>
+        <a href="https://instagram.com/moykrym" target="_blank" class="hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>Создано с любовью к Крыму</p>
     </div>
   </footer>
+
+  <button id="to-top" title="Наверх"><i class="fas fa-arrow-up"></i></button>
+
+  <script>
+    // Темная тема
+    const toggleThemeButton = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = toggleThemeButton.querySelector('i');
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      body.classList.add('dark');
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+    toggleThemeButton.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const isDark = body.classList.contains('dark');
+      themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Анимация появления элементов
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, index * 200);
+      });
+    });
+
+    // Кнопка "Наверх"
+    const toTop = document.getElementById('to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        toTop.style.display = 'block';
+      } else {
+        toTop.style.display = 'none';
+      }
+    });
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Динамический год в футере
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
